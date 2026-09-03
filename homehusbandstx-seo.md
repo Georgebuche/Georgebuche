@@ -1,125 +1,90 @@
-# HomeHusbandsTX — SEO Audit & Action Plan
+# HomehusbandsTx — SEO Audit & Action Plan
 
-**Version:** 1
-**Prepared:** September 3, 2026
+**Version:** 2 — supersedes v1 (Sept 3, 2026)
+**Updated:** September 3, 2026
 **Owner:** George Onwubuche (Tomball, TX)
 **Domain:** homehusbandstx.com (Hostinger registrar, active, expires 2027-06-22)
-**Purpose:** Diagnose why the site has no search presence and give a ranked, executable plan to fix it.
+
+**What changed in v2:** the real service list arrived, and it invalidates the v1 strategy.
+This is not a general handyman business. It is three specific services, and that is a
+materially better position than v1 assumed. Sections 4–7 are rewritten. Section 3 is unchanged
+and still blocking.
 
 ---
 
 ## 1. Headline finding
 
-**The site currently has no measurable organic search presence.** A `site:homehusbandstx.com`
-query returns nothing, and a branded search for "Home Husbands TX" surfaces competitors
-(Mr. Handyman, Handyman Connection, Rent A Husband) but never this business.
+**The site still has no measurable organic search presence.** `site:homehusbandstx.com` returns
+nothing. Nothing ranks because, as far as the public index is concerned, the site is not there.
 
-This is **not** a "tune the title tags" problem. Nothing is ranking because — as far as the
-public index is concerned — the site is not there. The work below is ordered accordingly:
-indexation and local presence first, on-page refinement second, content last.
+**But the competitive picture is much better than v1 assumed.** v1 planned around "handyman
+Houston" — a franchise battleground against Mr. Handyman, Handyman Connection and Ace Handyman,
+with budgets a small operator cannot match. Your actual services are not in that fight:
 
-**Also important:** for a home-services business in the Houston metro, the Google Business
-Profile drives more booked jobs than the website does. The map pack sits above the organic
-results for every "handyman near me" style query. Section 4 is the highest-revenue section
-in this document; do it even if nothing else gets done.
+- **Bidet installation** has almost no local competition and near-100% transactional intent.
+  It is the cheapest win available to you.
+- **Critter proofing** is a real, seasonal, high-intent local category with modest competition.
+- **Quarterly home maintenance** is recurring revenue, and its individual components have far
+  more search demand than the plan itself does.
+
+Stop thinking of this as "a handyman site that needs SEO". It is three niche service
+businesses that each need a page, and one of them is nearly uncontested.
 
 ---
 
-## 2. What was verified, and what wasn't
+## 2. Status board
 
-Verified directly against the Hostinger account and public search results:
-
-| Fact | Source |
+| Item | Status |
 |---|---|
-| Domain active, registered 2026-06-22, expires 2027-06-22 | Hostinger domain list |
-| Live site is served from **Netlify**, not Hostinger | DNS zone (below) |
-| A Hostinger hosting account still exists for the domain | Hostinger website list (`u947922456`) |
-| Apex has a **conflicting IPv6 record** | DNS zone (below) |
-| Zero indexed pages, zero branded results | `site:` and brand searches |
+| Google Business Profile | ✅ Claimed |
+| Bing Places | ✅ Linked |
+| Domain active and healthy | ✅ Verified |
+| Site served from Netlify | ✅ Verified — deployed by drag-and-drop, not from a repo |
+| Apex `AAAA` record conflict | ❌ **Still live. Top priority.** (Section 3.1) |
+| Google Search Console | ❌ Not confirmed set up |
+| Indexed pages | ❌ Zero |
+| Service pages | ❌ None — Section 5 defines them |
+| GBP categories tuned to real services | ❌ Almost certainly wrong — Section 4 |
 
-**Not verified — the site's own HTML could not be read from this environment.** Outbound
-requests to `homehusbandstx.com` and `homehusbandstx.netlify.app` are refused by the network
-egress proxy (HTTP 403, organization policy). The Hostinger file API also returns 500/422 for
-this domain, consistent with the real site living on Netlify and the Hostinger document root
-being empty or absent.
-
-So the following are **unassessed** and need a pass once access exists: current title tags and
-meta descriptions, heading structure, word count, image alt text, page speed / Core Web
-Vitals, existing schema markup, and whether a `robots.txt` or `sitemap.xml` is present at all.
-Sections 5 and 6 give the templates to apply; they were written to be correct regardless of
-what is currently there.
+**Still not assessed:** the site's own HTML. Outbound access to `homehusbandstx.com` and the
+Netlify origin is refused by this environment's egress proxy (HTTP 403, organisation policy).
+So current title tags, headings, word count, alt text, page speed and existing schema remain
+unseen. Everything below is written to be correct regardless of what is there now.
 
 ---
 
-## 3. Technical foundation — fix first
+## 3. Technical foundation — unchanged from v1, still blocking
 
-### 3.1 The apex IPv6 record is pointing at the wrong server ⚠️ HIGH
-
-Current apex records:
+### 3.1 The apex IPv6 record points at the wrong server ⚠️ DO THIS FIRST
 
 ```
-A     @   75.2.60.5                              → Netlify
-AAAA  @   2a02:4780:b:748:0:3880:2618:3          → Hostinger shared hosting
-CNAME www homehusbandstx.netlify.app.            → Netlify
+A     @    75.2.60.5                       → Netlify   (the real site)
+AAAA  @    2a02:4780:b:748:0:3880:2618:3   → Hostinger (empty)
+CNAME www  homehusbandstx.netlify.app.     → Netlify
 ```
 
-The IPv4 apex goes to Netlify. The IPv6 apex goes to Hostinger. These are two different
-servers serving one hostname.
+Google crawls dual-stack and **prefers IPv6 when a AAAA record exists**. Googlebot is likely
+resolving to the empty Hostinger box rather than your Netlify site. That alone is sufficient to
+explain zero indexation.
 
-Why this matters for SEO specifically: Google crawls dual-stack and **prefers IPv6 when a
-AAAA record exists**. If Googlebot resolves `homehusbandstx.com` over IPv6, it is talking to
-the Hostinger box, not the Netlify site — where it will get an empty document root, a parking
-page, or a TLS certificate that does not cover this domain. Any of those is sufficient on its
-own to keep the site out of the index, and it would explain the total absence of results in
-Section 1.
+**Fix:** hPanel → Domains → homehusbandstx.com → DNS. Delete the single row of type `AAAA`,
+name `@`, value `2a02:4780:b:748:0:3880:2618:3`. Leave `A @ 75.2.60.5` alone. Email is
+unaffected — MX, SPF, DKIM and DMARC are separate records. Propagation is ~5 minutes at the
+current 300s TTL, and a DNS snapshot exists as a restore point.
 
-**Fix: delete the `AAAA @` record.** Netlify does not publish stable AAAA addresses for apex
-domains, so there is no correct IPv6 value to substitute — removing it makes every client
-fall back to the IPv4 record, which is correct. Nothing about email is affected: MX, SPF,
-DKIM and DMARC are separate records and stay untouched.
+> This was approved and attempted through the Hostinger connector. Three safe routes were
+> tried — empty record list (rejected, 422), `is_disabled: true` (accepted but not honoured),
+> and a full-zone resubmit minus the AAAA (no-op, since `overwrite` is per-RRset). The
+> connector's delete endpoint exposes only a `domain` parameter with no record filter, so
+> calling it would target the whole zone including your email records. Not attempted. **The
+> zone was verified intact after every attempt.** It needs one manual click.
 
-This is the same class of bug already documented on piecesbyheart.com, which carries a stray
-`AAAA @` at `2a02:4780:b:748:0:3880:2618:5` — the adjacent address in the same Hostinger
-block. Both domains were pointed away from Hostinger and both kept the orphaned IPv6 record.
+### 3.2 Canonical hostname
 
-> **Status: approved by George, attempted, blocked by a tooling limit. Needs 30 seconds in
-> hPanel.**
->
-> Three safe routes were tried through the Hostinger connector, and the record is still live:
->
-> | Attempt | Result |
-> |---|---|
-> | Update the `AAAA` RRset with an empty record list | Rejected, HTTP 422 |
-> | Set the record to `is_disabled: true` | Accepted, but not honoured — record unchanged |
-> | Resubmit the full zone minus the `AAAA`, `overwrite=true` | No-op — `overwrite` is per-RRset, so unlisted records survive |
->
-> The connector's delete endpoint exposes only a `domain` parameter and no record filter, so
-> calling it would target the entire zone — including the MX, SPF and DKIM records carrying
-> `@homehusbandstx.com` email. That was not attempted.
->
-> **The zone was verified intact after every attempt. Nothing was changed or lost.**
->
-> **Do this manually instead — hPanel → Domains → homehusbandstx.com → DNS / Nameservers.**
-> Find the row of type `AAAA`, name `@`, pointing at `2a02:4780:b:748:0:3880:2618:3`, and
-> delete that row only. Leave `A @ 75.2.60.5` exactly as it is. Propagation is 5 minutes at
-> the current 300s TTL, and a DNS snapshot from earlier today exists as a restore point if
-> anything looks wrong.
-
-### 3.2 Pick one canonical hostname
-
-Both `homehusbandstx.com` and `www.homehusbandstx.com` currently resolve. If both serve the
-site with a 200, every page exists at two URLs and whatever authority the site earns is split
-between them.
-
-Choose one — apex (`homehusbandstx.com`) is the better default here since it is shorter, it
-is what will be printed on a truck magnet or a business card, and Netlify handles it fine.
-Then 301 the other to it. On Netlify, set the apex as the primary domain in
-**Site settings → Domain management**; Netlify issues the redirect automatically. Verify
-afterward that `www` returns `301`, not `200`.
+Both apex and `www` resolve. Set the apex as primary in Netlify → Domain management; Netlify
+issues the 301. Confirm `www` returns `301`, not `200`.
 
 ### 3.3 robots.txt
-
-Serve at `/robots.txt`. Paste-ready:
 
 ```
 User-agent: *
@@ -128,127 +93,146 @@ Allow: /
 Sitemap: https://homehusbandstx.com/sitemap.xml
 ```
 
-The thing to actually check is that a stray `Disallow: /` is not already being served — that
-single line would fully explain zero indexation, and it is a common leftover from a staging
-deploy. Check this before assuming anything else in Section 3 is the cause.
+Check first that a stray `Disallow: /` is not already being served — that one line would
+independently explain zero indexation, and it is a common leftover from a staging deploy.
 
-### 3.4 sitemap.xml
+### 3.4 Search Console — the missing piece
 
-Serve at `/sitemap.xml`. One `<url>` block per real page:
+GBP and Bing Places are done; Search Console is the gap. Add a **Domain** property, verify by
+DNS TXT at Hostinger, submit the sitemap, then URL Inspection → Request Indexing on the
+homepage. After a week, read **Pages → Why pages aren't indexed** — a *Server error (5xx)*
+there confirms the 3.1 diagnosis.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://homehusbandstx.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://homehusbandstx.com/services/</loc><priority>0.8</priority></url>
-  <url><loc>https://homehusbandstx.com/about/</loc><priority>0.5</priority></url>
-  <url><loc>https://homehusbandstx.com/contact/</loc><priority>0.8</priority></url>
-</urlset>
+---
+
+## 4. Google Business Profile — retune it for the real services
+
+The profile is claimed, which means the hard part is done. But it was almost certainly set up
+generically, and **the primary category is the single strongest ranking lever in local search.**
+Getting it wrong costs more than anything else on this list.
+
+### 4.1 Categories
+
+**Primary: `Handyman`.** It is the broadest match to the quarterly maintenance plan and bidet
+installation, and it is the category that customer searches for those jobs actually trigger. In
+Tomball the handyman map pack is genuinely winnable — the franchise problem is a Houston-proper
+problem, not a Tomball one.
+
+**Secondaries, in priority order:**
+
+| Category | Covers | Check first |
+|---|---|---|
+| `Pest control service` | Critter proofing | ⚠️ Licensing — see 4.2 |
+| `Plumber` | Bidet installation | ⚠️ Licensing — see 4.2 |
+| `Air duct cleaning service` | Dryer vent clearing | Fits cleanly |
+| `Property maintenance` / `Building maintenance` | Quarterly plan | Pick whichever GBP offers |
+
+Category names differ slightly by market and Google revises the list — pick the closest match
+from what your dashboard actually offers rather than forcing these strings. Set the primary
+once and leave it; churning it resets your standing.
+
+### 4.2 ⚠️ Two licensing questions to settle before claiming categories
+
+Not legal advice — but both are worth confirming before you put them on a public profile:
+
+- **Plumbing.** Texas regulates plumbing through the Texas State Board of Plumbing Examiners.
+  Attaching a bidet seat to an existing supply line via a T-valve is generally treated as an
+  appliance install, not plumbing work. A full fixture install involving new supply or drain
+  lines is a different matter. Claiming the `Plumber` category without a licence is a real
+  exposure — verify where your work falls before selecting it.
+- **Pest control.** Structural pest control in Texas is licensed by the Texas Department of
+  Agriculture. Sealing entry points with no pesticide application and no animal handling
+  generally sits outside that. Trapping or relocating wildlife is separate again and may need a
+  Texas Parks & Wildlife permit. Confirm before selecting `Pest control service`.
+
+If either is unresolved, leave the category off and rank that page organically instead. An
+organic ranking is slower than the map pack but carries none of this risk.
+
+### 4.3 Services list
+
+Enter all three headline services, and **enter the six maintenance components individually**.
+Each becomes a separately matchable term, and the components are what people actually search:
+
+```
+Critter proofing
+Bidet installation
+Quarterly home maintenance plan
+  → AC filter change
+  → AC condensate drain line flush
+  → Dryer vent cleaning
+  → Smoke detector testing and battery replacement
+  → Garbage disposal reset and inspection
+  → Attic inspection (insulation, moisture, pest signs)
 ```
 
-Do not list URLs that 301 or 404 — a sitemap full of redirects is a negative quality signal.
+### 4.4 Service area
 
-### 3.5 Get the site into the index
+List the six confirmed cities: **Houston, Tomball, Spring, The Woodlands, Sugar Land, Cypress.**
+Google allows up to 20, but padding the list dilutes relevance rather than extending reach.
+Note that the pin's location — not the list — drives map-pack placement (see 5.4).
 
-None of the above matters until Google is told the site exists.
+### 4.5 Reviews
 
-1. **Google Search Console** — add a *Domain* property (`homehusbandstx.com`), which covers
-   apex, www and every subdomain in one. Verify with a DNS TXT record at Hostinger.
-2. Submit the sitemap.
-3. Use **URL Inspection → Request Indexing** on the homepage. This is the fastest path from
-   "invisible" to "in the index" and often works within days.
-4. Check **Pages → Why pages aren't indexed** after a week. That report will name the actual
-   cause — "Discovered – currently not indexed", "Redirect error", "Server error (5xx)" — and
-   a 5xx there would confirm the IPv6 diagnosis in 3.1.
-5. **Bing Webmaster Tools** — import directly from Search Console, about two minutes. Bing
-   also feeds ChatGPT and Copilot results, which increasingly matter for local intent.
+Ask every customer in person the moment the job is finished and they're happy. That is the only
+moment with a high conversion rate; send the link by text while you're still there. Respond to
+every review. **The quarterly plan is a review machine** — four touchpoints a year per customer
+instead of one. Ask on the second visit, once they've seen you show up as promised.
 
----
+### 4.6 NAP
 
-## 4. Google Business Profile — the highest-ROI work
+Business name **HomehusbandsTx**. Whatever exact string is on the Google Business Profile is
+canonical — copy it character-for-character everywhere else, including capitalisation.
+Inconsistent NAP is the most common reason local rankings stall.
 
-For "handyman near me", "handyman Tomball TX" and every similar query, Google shows a map
-pack of three local businesses above the organic results. Entry to that pack is governed by
-the Google Business Profile, not the website. A business with a strong profile and a thin
-website consistently outbooks the reverse.
-
-**Setup checklist:**
-
-- **Claim and verify** the profile at business.google.com. Verification is by video or
-  postcard and is the long pole — start it today, everything else can proceed in parallel.
-- **Service-area business.** If the business runs out of a home, hide the street address and
-  define a service area instead. Listing a residential address publicly is both a privacy
-  problem and a ranking liability.
-- **Primary category** is the single strongest ranking lever in the profile. Pick the one that
-  matches the core money service exactly — `Handyman` for general repair work. Add secondary
-  categories for anything genuinely offered.
-- **Services list** — enumerate every service individually with a short description each.
-  These become matchable terms.
-- **Photos.** Real job photos, before/after pairs, the truck, the owner. Geotagging is a myth,
-  but volume and recency are not. Add a few every month.
-- **Service area** — list the six confirmed cities. Google allows up to 20, but padding the
-  list dilutes relevance rather than extending reach. The pin's location, not the list, is what
-  drives map-pack placement — see 5.3 on Sugar Land.
-- **Hours**, including holiday hours. Add a booking or call link.
-- **Q&A** — seed it by asking and answering the five questions customers actually ask
-  (pricing, service area, licensing, emergency availability, payment methods).
-
-**Reviews are the compounding asset.** Ask every single customer, in person, at the moment the
-job is finished and they are happy — that is the only moment with a high conversion rate. Send
-a short link by text. Respond to every review, positive and negative; response rate is itself
-a signal and negative reviews handled well convert readers better than a wall of five stars.
-
-**Citations — same NAP everywhere.** Write the business name, address and phone once, in one
-exact string, and reuse it character-for-character. Inconsistent NAP is the most common reason
-local rankings stall.
-
-Priority order: Apple Business Connect, Bing Places, Facebook, Nextdoor (heavily used for home
-services in Houston suburbs), Yelp, Angi, Thumbtack, HomeAdvisor, BBB, and the Tomball and
-Houston-area chambers of commerce.
+*Still needed: the public phone number and business email to publish.*
 
 ---
 
-## 5. On-page templates
+## 5. Site architecture and keyword map
 
-### 5.1 Title tags and meta descriptions
+### 5.1 The core insight
 
-Titles: put the money keyword first, the city second, the brand last. Keep under ~60
-characters so they don't truncate.
+**The maintenance plan's components have far more search demand than the plan itself.**
 
-| Page | Title | Meta description |
-|---|---|---|
-| Home | `Handyman Services in Greater Houston \| Home Husbands TX` | `Trusted local handyman for repairs, installs and honest home fixes across Houston, Tomball, Spring, The Woodlands, Sugar Land and Cypress. Free estimates — call (XXX) XXX-XXXX.` |
-| Service | `[Service] in [City], TX \| Home Husbands TX` | `Professional [service] in [city]. Upfront pricing, clean work, done right the first time. Call for a free estimate.` |
-| City | `Handyman in [City], TX \| Home Husbands TX` | `Local handyman serving [city] and nearby. Repairs, mounting, drywall, doors and more. Same-week appointments available.` |
-| Contact | `Contact Home Husbands TX \| Free Estimates` | `Call, text or request a quote online. Serving [cities]. Fast response, no obligation.` |
+Nobody wakes up and searches "quarterly home maintenance plan". They search "dryer vent
+cleaning near me" because their clothes take two cycles to dry, or "AC drain line clogged"
+because there's water on the floor. Those are urgent, high-volume, high-intent queries.
 
-Every page needs a **unique** title and description. Duplicates across pages are a common and
-easily avoided drag.
+So: **rank for the component problems individually, then convert those callers onto the
+quarterly plan.** The plan is the upsell, not the entry point. That single reframe is worth more
+than every title tag in this document.
 
-### 5.2 Page structure
+### 5.2 Page map
 
-- Exactly one `<h1>` per page, containing the service and the city.
-- Phone number in the header as a `tel:` link — on mobile that is the primary conversion, and
-  a non-clickable phone number is a real revenue leak.
-- A call to action above the fold, and again at the bottom.
-- Descriptive `alt` text on every image.
-- Real photos of real jobs. Stock photography reads as untrustworthy in this category and
-  hurts conversion measurably.
+| Page | Primary target | Volume | Competition | Priority |
+|---|---|---|---|---|
+| `/bidet-installation/` | bidet installation houston / near me | Low | **Almost none** | **1st** |
+| `/critter-proofing/` | rodent proofing, wildlife exclusion + city | Moderate | Low–moderate | **2nd** |
+| `/dryer-vent-cleaning/` | dryer vent cleaning + city | **Good** | Moderate | **3rd** |
+| `/ac-drain-line-flush/` | ac condensate drain line clogged / flush | Good, seasonal | Low | 4th |
+| `/quarterly-home-maintenance/` | home maintenance plan houston | Low | Low | 5th |
+| `/attic-inspection/` | attic inspection, attic insulation check | Moderate | Moderate | 6th |
+| Home | brand + Greater Houston | — | — | Alongside |
 
-### 5.3 Service and city pages
+**Build in that order.** Bidet first because it is the closest thing to a free win on this
+list, and an early ranking gives the whole domain a signal to build on.
 
-Local sites rank on the strength of one page per service, and one page per city, rather than
-a single homepage that lists everything.
+### 5.3 Two things to get right per page
 
-**The trap:** generating twenty near-identical city pages with the name swapped is a doorway
-page pattern, and Google demotes it. If a city page cannot carry genuinely distinct content —
-a real job done there, a neighborhood referenced, a local specific — do not create it. Three
-substantial city pages beat twenty templated ones.
+**Critter proofing: keep the brand name, but carry the search terms.** "Critter proofing" is
+warm and on-brand, and it is *not* what people type. They type *rat proofing house*, *rodent
+exclusion*, *squirrel in attic*, *seal entry points*, *animal removal*. Use "critter proofing"
+as the H1 and brand language, then make sure the body copy genuinely uses the terms people
+search — naturally, in real sentences, not stuffed.
 
-**Confirmed service area: Houston, Tomball, Spring, The Woodlands, Sugar Land, Cypress.**
+**Bidet installation is uncontested — take it metro-wide.** Almost no local competitor has a
+page for this. The searcher has just bought a bidet, opened the box, and found they need a
+T-valve and possibly a nearby GFCI outlet for a heated seat. That is a person who will call the
+first credible result. One good page can own this term across all six cities.
 
-These six are not equally winnable, and treating them as one undifferentiated list is how
-local SEO effort gets wasted. Build them in this order:
+### 5.4 City pages — later, and fewer than you'd think
+
+Your six cities are not equally winnable:
 
 | City | Competition | Realistic outcome | Build |
 |---|---|---|---|
@@ -256,150 +240,256 @@ local SEO effort gets wasted. Build them in this order:
 | **Spring** | Moderate | Map pack + organic | Second |
 | **Cypress** | Moderate | Map pack + organic | Third |
 | **The Woodlands** | Moderate–high | Organic; map pack possible | Fourth |
-| **Sugar Land** | Moderate | Organic only — see below | Fifth |
+| **Sugar Land** | Moderate | **Organic only** | Fifth |
 | **Houston** | Very high | Long-term, via submarkets | Last |
 
-**Tomball, Spring and Cypress are the winnable ones**, and they should be built first
-regardless of which cities produce the most revenue today. They sit close to the likely
-business location, the competition is local operators rather than franchises, and the map pack
-is genuinely reachable.
+**Sugar Land cannot win the map pack.** It is ~45 miles southwest of Tomball, on the far side
+of Houston. Local pack placement is driven by proximity between searcher and business pin, so a
+northwest pin will essentially never surface there. Sugar Land is an organic-only target — and
+check the drive time is economic before chasing small jobs across the metro.
 
-**Sugar Land is the outlier and needs a different plan.** It sits roughly 45 miles southwest of
-Tomball, on the far side of Houston. Google's local pack ranks heavily on proximity between the
-searcher and the business's pin, so a profile pinned in the northwest **will essentially never
-appear in Sugar Land's map pack**, however good the profile is. Sugar Land can only be won
-organically, through a genuinely useful city page. Worth doing — but expect no map-pack
-presence there, and check the drive time is economic before chasing small jobs across the
-metro.
+**The service pages come first.** A ranking service page serving six cities beats six thin city
+pages serving none. Generating near-identical city pages with the name swapped is a doorway
+pattern and Google demotes it — if a city page can't carry genuinely distinct content, don't
+create it.
 
-**"Handyman Houston" is the hardest term on this list, not the easiest.** It is a franchise
-battleground — Mr. Handyman, Handyman Connection and Ace Handyman all rank and bid there, with
-budgets a small operator cannot match. Do not make it the primary target. The way into Houston
-is through named submarkets people actually search: Cypress, Champions, Klein, Jersey Village,
-Spring Branch, the Heights. Each is a fraction of the difficulty and converts better, because
-the intent behind the search is more specific.
+**URL pattern:** `/critter-proofing/tomball-tx/` once you get there. Consistency matters more
+than which pattern you choose; changing later costs redirects.
 
-**URL pattern.** Pick one and keep it consistent — `/handyman/tomball-tx/`,
-`/handyman/spring-tx/`, and so on. Consistency matters more than which pattern you pick, and
-changing it later costs redirects.
+---
 
-### 5.4 Structured data
+## 6. Page copy — paste-ready
 
-Add once, in the `<head>` of the homepage. Replace every bracketed value with the real one —
-the phone and the geo coordinates in particular must match the Google Business Profile exactly.
+Written for conversion, not for keyword density. Adjust the voice to match how you actually
+talk to customers.
+
+### 6.1 Bidet installation
+
+**Title:** `Bidet Installation in Houston & Tomball, TX | HomehusbandsTx` *(58 chars)*
+**Meta:** `Bought a bidet and need it installed right? We handle the T-valve, the fit and the leak test — usually in under an hour. Serving Houston, Tomball, Spring, The Woodlands, Sugar Land and Cypress.`
+**H1:** `Bidet Installation, Done Right the First Time`
+
+> You bought the bidet. Now there's a box on the bathroom floor, a bag of fittings, and an
+> instruction sheet that assumes you own a basin wrench.
+>
+> We install bidet seats and attachments across the Houston area — usually in under an hour.
+> We shut off the supply, fit the T-valve, mount and level the seat, and pressure-test every
+> connection before we leave. No drips, no "keep an eye on it for a few days."
+>
+> **What we handle**
+> - Bidet seats, attachments and standalone units
+> - T-valve and supply line fitting
+> - Levelling and secure mounting on standard and elongated bowls
+> - Full leak test before we leave
+> - Heated and electric models — we'll tell you honestly before we start whether your outlet
+>   situation works, rather than after
+>
+> **Before you book:** electric and heated seats need a grounded outlet within reach of the
+> cord. If your bathroom doesn't have one near the toilet, tell us when you call and we'll
+> talk you through the options instead of turning up and shrugging.
+>
+> **[Call (XXX) XXX-XXXX]** — or send a photo of your toilet and the box, and we'll confirm
+> it's a straightforward job before anyone commits.
+
+### 6.2 Critter proofing
+
+**Title:** `Critter Proofing & Rodent Exclusion | Houston & Tomball, TX` *(58 chars)*
+**Meta:** `Seal the ways in and the problem stops coming back. Full-home exclusion for rats, mice and squirrels across Houston, Tomball, Spring, The Woodlands, Sugar Land and Cypress.`
+**H1:** `Critter Proofing — Seal the Ways In, Not Just the One You Found`
+
+> Trapping the rat you heard last night doesn't fix anything. Another one uses the same gap
+> next week. Rodent problems are entry-point problems, and until the entry points are sealed
+> you're just managing symptoms.
+>
+> We do full-home exclusion: find every way in, seal it properly, and make it stay sealed.
+>
+> **Where they actually get in**
+> - Roofline gaps, soffit returns and fascia joints
+> - Dryer and bathroom vent terminations with failed or missing covers
+> - Weep holes, foundation gaps and utility penetrations
+> - Garage door corner seals — the single most common one we find
+> - Attic gable vents and ridge vent edges
+>
+> **How we work.** We inspect the full exterior and the attic, show you the photos of what we
+> found, and seal with materials rodents can't chew through — steel mesh, hardware cloth and
+> sealant, not expanding foam on its own. Then we tell you what we saw in the attic:
+> insulation condition, moisture, and any droppings or nesting.
+>
+> **Timing matters in Houston.** Rodents move indoors when nights start cooling — late October
+> through December is when most people first hear something overhead. Sealing in September
+> beats sealing in December.
+>
+> **[Call (XXX) XXX-XXXX]** for an exterior and attic inspection.
+
+### 6.3 Quarterly home maintenance
+
+**Title:** `Quarterly Home Maintenance Plan | Houston & Tomball, TX` *(54 chars)*
+**Meta:** `Four visits a year. AC drain line, dryer vent, smoke detectors, disposal and attic — checked before they become emergencies. Serving the greater Houston area.`
+**H1:** `The Quarterly Home Maintenance Plan`
+
+> Most home emergencies are maintenance that got skipped. A clogged AC condensate line floods a
+> ceiling in August. A packed dryer vent is a fire risk long before it's an inconvenience. A
+> smoke detector chirps at 3am because nobody changed the battery in two years.
+>
+> We come four times a year and handle the things that quietly go wrong.
+>
+> **Every visit**
+> - **AC filter changed** — the right size, actually replaced, not just looked at
+> - **AC condensate drain line flushed** — the number one cause of summer ceiling damage in
+>   Houston
+> - **Dryer vent cleared end to end** — not just the lint trap; the full run to the exterior
+>   vent
+> - **Smoke detectors tested, batteries replaced** — every unit, every visit
+> - **Garbage disposal reset and checked**
+> - **Attic inspected** — insulation condition, moisture, and any sign of pests
+>
+> **Why quarterly.** Houston runs the AC most of the year, humidity keeps condensate lines
+> working hard, and attic problems are cheap to fix early and expensive to fix late. Four
+> visits catches the seasonal stuff in the season it matters.
+>
+> **You get a written summary after every visit** — what we checked, what we found, what needs
+> watching. No upsell theatre.
+>
+> **[Call (XXX) XXX-XXXX]** to start the plan.
+
+### 6.4 Remaining pages — headlines only
+
+| Page | Title | H1 |
+|---|---|---|
+| Dryer vent | `Dryer Vent Cleaning in Houston & Tomball, TX \| HomehusbandsTx` | `Dryer Vent Cleaning — Cleared End to End` |
+| AC drain line | `AC Drain Line Flush & Unclog \| Houston & Tomball, TX` | `Clogged AC Drain Line? We'll Flush It Today` |
+| Attic inspection | `Attic Inspection — Insulation, Moisture & Pests \| Houston, TX` | `What's Actually Going On in Your Attic` |
+| Home | `Home Maintenance & Repair in Greater Houston \| HomehusbandsTx` | `Critter Proofing, Bidet Installs and Quarterly Home Maintenance` |
+
+Every page needs a unique title and meta. One `<h1>` per page. Phone number in the header as a
+`tel:` link — on mobile that is the primary conversion, and a non-clickable number is a real
+revenue leak. Real photos of real jobs; stock imagery measurably hurts conversion here.
+
+---
+
+## 7. Structured data
+
+Paste in the homepage `<head>`. Replace bracketed values. Phone must match the GBP exactly.
 
 ```html
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
-  "name": "Home Husbands TX",
+  "name": "HomehusbandsTx",
   "url": "https://homehusbandstx.com",
   "telephone": "[+1-XXX-XXX-XXXX]",
   "email": "[info@homehusbandstx.com]",
   "priceRange": "$$",
   "image": "https://homehusbandstx.com/[logo.png]",
   "areaServed": [
-    { "@type": "City", "name": "Houston",       "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "Tomball",       "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "Spring",        "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "The Woodlands", "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "Sugar Land",    "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "Cypress",       "address": { "@type": "PostalAddress", "addressRegion": "TX" } }
+    { "@type": "City", "name": "Houston",       "address": {"@type":"PostalAddress","addressRegion":"TX"} },
+    { "@type": "City", "name": "Tomball",       "address": {"@type":"PostalAddress","addressRegion":"TX"} },
+    { "@type": "City", "name": "Spring",        "address": {"@type":"PostalAddress","addressRegion":"TX"} },
+    { "@type": "City", "name": "The Woodlands", "address": {"@type":"PostalAddress","addressRegion":"TX"} },
+    { "@type": "City", "name": "Sugar Land",    "address": {"@type":"PostalAddress","addressRegion":"TX"} },
+    { "@type": "City", "name": "Cypress",       "address": {"@type":"PostalAddress","addressRegion":"TX"} }
   ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Critter Proofing",
+        "description": "Full-home rodent and wildlife exclusion — entry point sealing, roofline, vents and foundation gaps." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bidet Installation",
+        "description": "Bidet seat and attachment installation including T-valve fitting and leak testing." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Quarterly Home Maintenance",
+        "description": "Four visits a year: AC filter change, condensate drain line flush, dryer vent clearing, smoke detector testing, garbage disposal check and attic inspection." } }
+    ]
+  },
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
     "opens": "08:00",
     "closes": "18:00"
   }],
-  "sameAs": [
-    "[https://www.facebook.com/...]",
-    "[https://www.google.com/maps/place/...]"
-  ]
+  "sameAs": ["[Google Maps URL]", "[Facebook URL]"]
 }
 </script>
 ```
 
-Use `HomeAndConstructionBusiness` rather than the generic `LocalBusiness` — it is the more
-specific type and describes this business correctly. If the address is not public, omit
-`address` entirely rather than supplying a partial one. Validate at
-`search.google.com/test/rich-results` before shipping.
+Use `HomeAndConstructionBusiness`, not the generic `LocalBusiness` — it is the more specific
+type. If the address isn't public, omit `address` rather than supplying a partial one. Validate
+at `search.google.com/test/rich-results` before shipping.
+
+Add `FAQPage` schema to each service page once the copy is live — pricing, timing and
+"do I need to be home" are the three questions worth marking up.
 
 ---
 
-## 6. Content — after the foundation is live
+## 8. Seasonal calendar — Houston-specific
 
-Content is last on purpose. Publishing articles onto a site that is not indexed and has no
-Google Business Profile is wasted effort.
+Publishing the right page in the wrong month wastes it. Ranking takes weeks, so publish ahead
+of demand, not into it.
 
-Once Sections 3 and 4 are done, the queries worth writing for are the ones with buying intent
-or seasonal urgency, which in this market means:
-
-- Texas freeze prep — pipe insulation, outdoor faucet covers. Publish in October, not January.
-- Storm and hurricane season prep and post-storm repair. Publish in May.
-- "How much does a handyman cost in Houston" — high volume, high intent, and a page that
-  answers it honestly earns trust and links.
-- Homeowner-vs-pro guides for the services actually sold. These rank and they pre-qualify
-  callers.
-
-One genuinely useful page per month beats a burst of thin ones.
+| Publish | Page / content | Why |
+|---|---|---|
+| **September** | Critter proofing | Rodents move indoors as nights cool, Oct–Dec |
+| **October** | Freeze prep — pipe insulation, faucet covers | Ahead of the January freeze panic |
+| **November** | Dryer vent cleaning | Heavier dryer use through winter |
+| **April–May** | AC drain line flush | Ahead of the summer condensate season |
+| **May** | Storm and hurricane prep | Season opens June 1 |
+| **Year-round** | Bidet installation | No seasonality — publish first, it's the easiest win |
 
 ---
 
-## 7. Measurement
+## 9. Measurement
 
 | Tool | What it answers | Cadence |
 |---|---|---|
-| Google Search Console | Is it indexed, what queries surface it, what is broken | Weekly at first |
-| Google Business Profile Insights | Calls, direction requests, map views | Monthly |
+| Google Search Console | Is it indexed, what queries surface it, what's broken | Weekly at first |
+| GBP Insights | Calls, direction requests, map views | Monthly |
 | GA4 | Traffic and conversions | Monthly |
-| Manual local search | Where the business sits in the map pack | Monthly |
+| Manual local search | Map pack position, per city | Monthly |
 
-The one metric that matters in month one is **indexed page count in Search Console**. Until it
-is above zero, nothing else is measurable.
+Month one, the only metric that matters is **indexed page count**. Until it is above zero,
+nothing else is measurable.
 
 ---
 
-## 8. Execution order
+## 10. Execution order
 
 **This week**
-1. Delete the apex `AAAA` record — **manual, 30 seconds in hPanel** (Section 3.1)
-2. Start Google Business Profile claim and verification (Section 4)
-3. Verify Search Console, submit sitemap, request indexing (Section 3.5)
-4. Confirm `robots.txt` is not blocking crawlers (Section 3.3)
+1. **Delete the apex `AAAA` record** (3.1) — one click, and the most likely single cause of
+   zero indexation
+2. **Search Console** — verify, submit sitemap, request indexing (3.4)
+3. **Confirm `robots.txt` isn't blocking crawlers** (3.3)
+4. **Retune the GBP categories and services list** (4.1, 4.3) — settle the two licensing
+   questions in 4.2 first
 
 **Next two weeks**
-5. Set the canonical hostname and confirm the 301 (Section 3.2)
-6. Complete the GBP profile — categories, services, photos, hours
-7. Apply title tags, meta descriptions and schema (Section 5)
-8. Build the top NAP citations (Section 4)
+5. Canonical hostname and 301 (3.2)
+6. Publish `/bidet-installation/` — the easiest win on the board (6.1)
+7. Publish `/critter-proofing/` — in September, ahead of the season (6.2)
+8. Homepage title, meta and schema (6.4, 7)
+9. NAP citations: Apple Business Connect, Facebook, Nextdoor, Yelp, Angi, Thumbtack,
+   HomeAdvisor, BBB, Tomball chamber
 
 **Month two onward**
-9. Service pages, then city pages where there is real content to put on them
-10. Review generation as an ongoing habit, not a campaign
-11. First seasonal content piece
+10. `/quarterly-home-maintenance/`, then dryer vent and AC drain line
+11. Review generation as a habit — use the plan's four annual touchpoints
+12. City pages, starting with Tomball, only where there's real content to put on them
 
 ---
 
-## 9. Open questions
+## 11. Open items
 
-1. **Site access.** The Netlify site is not connected to either GitHub repo on this account,
-   and outbound access to the domain is blocked from this environment. To apply Sections 3 and
-   5 directly rather than handing over snippets: is the Netlify site deployed from a repo that
-   can be added, or is it drag-and-drop? Pushing the source into a repo would also make every
-   future change reviewable.
-2. **The service list.** Service area is now answered — Houston, Tomball, Spring, The
-   Woodlands, Sugar Land, Cypress — and applied throughout Sections 4 and 5. Still open: the
-   specific money services. "Handyman" is a category, not a keyword set. Whether the revenue
-   comes from drywall and paint, TV mounting and furniture assembly, door and window repair,
-   fence work, or light plumbing and electrical changes which service pages get built first
-   and what the Business Profile's secondary categories should be.
-3. **NAP string.** The exact business name, public phone, and business email to use — needed
-   before any citation or schema work, since the whole point is that it never varies.
-4. **Google Business Profile status.** Does one already exist, claimed or unclaimed? An
-   unclaimed auto-generated profile is common and changes the first step from "create" to
-   "claim".
-5. **Confirm the apex `AAAA` deletion once done** (Section 3.1) — approved, but the
-   Hostinger connector cannot delete a single record, so it needs a manual click in hPanel.
-   Worth re-requesting indexing in Search Console immediately afterward.
+1. **The apex `AAAA` deletion** (3.1) — approved, needs one manual click in hPanel. Re-request
+   indexing in Search Console straight afterward.
+2. **Phone number and business email** to publish. Needed before citations, schema and any page
+   copy goes live — every `[Call (XXX) XXX-XXXX]` above is waiting on it.
+3. **The two licensing questions** in 4.2, before selecting the `Plumber` or
+   `Pest control service` GBP categories.
+4. **Deployment.** Netlify is drag-and-drop, not connected to a repo. That means every change
+   is manual, nothing is reviewable, and there's no rollback. **Recommend connecting Netlify to
+   a GitHub repo** — Netlify then rebuilds on push, and the site becomes something that can be
+   changed properly. If you want this, say so and the repo gets scaffolded; the site's current
+   files would need exporting from Netlify first.
+5. **Current site HTML** still unseen (egress-blocked). Either connect the repo per item 4, or
+   paste the existing homepage `<head>` and I'll fold the changes into what's actually there
+   rather than handing over generic blocks.
