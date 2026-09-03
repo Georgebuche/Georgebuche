@@ -45,6 +45,7 @@ businesses that each need a page, and one of them is nearly uncontested.
 | Indexed pages | ❌ Zero |
 | Service pages | ❌ None — Section 5 defines them |
 | GBP categories tuned to real services | ❌ Almost certainly wrong — Section 4 |
+| NAP string | ✅ Defined — ⚠️ phone shared with Pieces by Heart, see 4.7 |
 
 **Still not assessed:** the site's own HTML. Outbound access to `homehusbandstx.com` and the
 Netlify origin is refused by this environment's egress proxy (HTTP 403, organisation policy).
@@ -184,7 +185,46 @@ Business name **HomehusbandsTx**. Whatever exact string is on the Google Busines
 canonical — copy it character-for-character everywhere else, including capitalisation.
 Inconsistent NAP is the most common reason local rankings stall.
 
-*Still needed: the public phone number and business email to publish.*
+**The master NAP string — use this exact text everywhere:**
+
+```
+HomehusbandsTx
+(281) 624-6402
+support@homehusbandstx.com
+https://homehusbandstx.com
+```
+
+Display format `(281) 624-6402`; schema and `tel:` links use `+12816246402`. Whatever string
+sits on the Google Business Profile wins if it differs — go and match it rather than changing
+the profile, since the profile is the entity Google trusts.
+
+### 4.7 ⚠️ The phone number is shared with Pieces by Heart
+
+`281-624-6402` is also recorded as the business phone for **piecesbyheart.com** (see
+`piecesbyheart-handoff.md` §2). Two distinct businesses publishing one phone number is a real
+local SEO problem, not a cosmetic one.
+
+Google treats the phone number as a primary identity signal for a business entity. When the
+same number appears under two different names, in two different categories, across directory
+citations, Google's options are to merge the entities, distrust one, or suppress both. Local
+listings have been demoted for exactly this.
+
+**Right now the exposure is low** — Pieces by Heart has no Google Business Profile, hasn't
+launched, and isn't cited anywhere. So nothing is being damaged today.
+
+**It becomes a real problem the moment either of these happens:**
+- Pieces by Heart publishes the number on its live site, or
+- a Google Business Profile is ever created for Pieces by Heart with that number
+
+**Recommendation: HomehusbandsTx keeps this number; Pieces by Heart gets a different one.**
+HomehusbandsTx is the local business — it is the one that lives or dies by the map pack, and
+the number is already tied to its profile. Pieces by Heart is e-commerce with a national
+audience, no service area and no need for a local phone identity, so it is the cheaper side to
+change — and it should change before launch rather than after citations exist.
+
+**Do not put `281-624-6402` on the Pieces by Heart storefront or in any Pieces by Heart
+directory listing.** That is a launch item for that project, not this one, and worth carrying
+back into the Pieces by Heart handoff.
 
 ---
 
@@ -288,7 +328,7 @@ talk to customers.
 > cord. If your bathroom doesn't have one near the toilet, tell us when you call and we'll
 > talk you through the options instead of turning up and shrugging.
 >
-> **[Call (XXX) XXX-XXXX]** — or send a photo of your toilet and the box, and we'll confirm
+> **[Call (281) 624-6402]** — or send a photo of your toilet and the box, and we'll confirm
 > it's a straightforward job before anyone commits.
 
 ### 6.2 Critter proofing
@@ -319,7 +359,7 @@ talk to customers.
 > through December is when most people first hear something overhead. Sealing in September
 > beats sealing in December.
 >
-> **[Call (XXX) XXX-XXXX]** for an exterior and attic inspection.
+> **[Call (281) 624-6402]** for an exterior and attic inspection.
 
 ### 6.3 Quarterly home maintenance
 
@@ -350,7 +390,7 @@ talk to customers.
 > **You get a written summary after every visit** — what we checked, what we found, what needs
 > watching. No upsell theatre.
 >
-> **[Call (XXX) XXX-XXXX]** to start the plan.
+> **[Call (281) 624-6402]** to start the plan.
 
 ### 6.4 Remaining pages — headlines only
 
@@ -378,8 +418,8 @@ Paste in the homepage `<head>`. Replace bracketed values. Phone must match the G
   "@type": "HomeAndConstructionBusiness",
   "name": "HomehusbandsTx",
   "url": "https://homehusbandstx.com",
-  "telephone": "[+1-XXX-XXX-XXXX]",
-  "email": "[info@homehusbandstx.com]",
+  "telephone": "+1-281-624-6402",
+  "email": "support@homehusbandstx.com",
   "priceRange": "$$",
   "image": "https://homehusbandstx.com/[logo.png]",
   "areaServed": [
@@ -481,8 +521,11 @@ nothing else is measurable.
 
 1. **The apex `AAAA` deletion** (3.1) — approved, needs one manual click in hPanel. Re-request
    indexing in Search Console straight afterward.
-2. **Phone number and business email** to publish. Needed before citations, schema and any page
-   copy goes live — every `[Call (XXX) XXX-XXXX]` above is waiting on it.
+2. ~~Phone number and business email~~ — **answered and applied throughout: (281) 624-6402,
+   support@homehusbandstx.com.** One item remains: confirm the Google Business Profile carries
+   this exact number, and that its name string matches character-for-character.
+   **New, from 4.7: decide which venture keeps this number.** It is currently shared with
+   Pieces by Heart.
 3. **The two licensing questions** in 4.2, before selecting the `Plumber` or
    `Pest control service` GBP categories.
 4. **Deployment.** Netlify is drag-and-drop, not connected to a repo. That means every change
