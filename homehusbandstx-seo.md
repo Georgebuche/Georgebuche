@@ -186,6 +186,9 @@ website consistently outbooks the reverse.
   These become matchable terms.
 - **Photos.** Real job photos, before/after pairs, the truck, the owner. Geotagging is a myth,
   but volume and recency are not. Add a few every month.
+- **Service area** — list the six confirmed cities. Google allows up to 20, but padding the
+  list dilutes relevance rather than extending reach. The pin's location, not the list, is what
+  drives map-pack placement — see 5.3 on Sugar Land.
 - **Hours**, including holiday hours. Add a booking or call link.
 - **Q&A** — seed it by asking and answering the five questions customers actually ask
   (pricing, service area, licensing, emergency availability, payment methods).
@@ -214,7 +217,7 @@ characters so they don't truncate.
 
 | Page | Title | Meta description |
 |---|---|---|
-| Home | `Handyman Services in Tomball & NW Houston \| Home Husbands TX` | `Trusted local handyman for repairs, installs and honest home fixes across Tomball, Spring and NW Houston. Free estimates — call (XXX) XXX-XXXX.` |
+| Home | `Handyman Services in Greater Houston \| Home Husbands TX` | `Trusted local handyman for repairs, installs and honest home fixes across Houston, Tomball, Spring, The Woodlands, Sugar Land and Cypress. Free estimates — call (XXX) XXX-XXXX.` |
 | Service | `[Service] in [City], TX \| Home Husbands TX` | `Professional [service] in [city]. Upfront pricing, clean work, done right the first time. Call for a free estimate.` |
 | City | `Handyman in [City], TX \| Home Husbands TX` | `Local handyman serving [city] and nearby. Repairs, mounting, drywall, doors and more. Same-week appointments available.` |
 | Contact | `Contact Home Husbands TX \| Free Estimates` | `Call, text or request a quote online. Serving [cities]. Fast response, no obligation.` |
@@ -242,8 +245,43 @@ page pattern, and Google demotes it. If a city page cannot carry genuinely disti
 a real job done there, a neighborhood referenced, a local specific — do not create it. Three
 substantial city pages beat twenty templated ones.
 
-Start with the cities where work is actually taken: Tomball, Spring, Magnolia, Cypress, The
-Woodlands, Klein.
+**Confirmed service area: Houston, Tomball, Spring, The Woodlands, Sugar Land, Cypress.**
+
+These six are not equally winnable, and treating them as one undifferentiated list is how
+local SEO effort gets wasted. Build them in this order:
+
+| City | Competition | Realistic outcome | Build |
+|---|---|---|---|
+| **Tomball** | Low | Map pack + organic | First |
+| **Spring** | Moderate | Map pack + organic | Second |
+| **Cypress** | Moderate | Map pack + organic | Third |
+| **The Woodlands** | Moderate–high | Organic; map pack possible | Fourth |
+| **Sugar Land** | Moderate | Organic only — see below | Fifth |
+| **Houston** | Very high | Long-term, via submarkets | Last |
+
+**Tomball, Spring and Cypress are the winnable ones**, and they should be built first
+regardless of which cities produce the most revenue today. They sit close to the likely
+business location, the competition is local operators rather than franchises, and the map pack
+is genuinely reachable.
+
+**Sugar Land is the outlier and needs a different plan.** It sits roughly 45 miles southwest of
+Tomball, on the far side of Houston. Google's local pack ranks heavily on proximity between the
+searcher and the business's pin, so a profile pinned in the northwest **will essentially never
+appear in Sugar Land's map pack**, however good the profile is. Sugar Land can only be won
+organically, through a genuinely useful city page. Worth doing — but expect no map-pack
+presence there, and check the drive time is economic before chasing small jobs across the
+metro.
+
+**"Handyman Houston" is the hardest term on this list, not the easiest.** It is a franchise
+battleground — Mr. Handyman, Handyman Connection and Ace Handyman all rank and bid there, with
+budgets a small operator cannot match. Do not make it the primary target. The way into Houston
+is through named submarkets people actually search: Cypress, Champions, Klein, Jersey Village,
+Spring Branch, the Heights. Each is a fraction of the difficulty and converts better, because
+the intent behind the search is more specific.
+
+**URL pattern.** Pick one and keep it consistent — `/handyman/tomball-tx/`,
+`/handyman/spring-tx/`, and so on. Consistency matters more than which pattern you pick, and
+changing it later costs redirects.
 
 ### 5.4 Structured data
 
@@ -262,10 +300,12 @@ the phone and the geo coordinates in particular must match the Google Business P
   "priceRange": "$$",
   "image": "https://homehusbandstx.com/[logo.png]",
   "areaServed": [
-    { "@type": "City", "name": "Tomball", "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "Spring",  "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "Magnolia","address": { "@type": "PostalAddress", "addressRegion": "TX" } },
-    { "@type": "City", "name": "Cypress", "address": { "@type": "PostalAddress", "addressRegion": "TX" } }
+    { "@type": "City", "name": "Houston",       "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
+    { "@type": "City", "name": "Tomball",       "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
+    { "@type": "City", "name": "Spring",        "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
+    { "@type": "City", "name": "The Woodlands", "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
+    { "@type": "City", "name": "Sugar Land",    "address": { "@type": "PostalAddress", "addressRegion": "TX" } },
+    { "@type": "City", "name": "Cypress",       "address": { "@type": "PostalAddress", "addressRegion": "TX" } }
   ],
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
@@ -349,10 +389,12 @@ is above zero, nothing else is measurable.
    5 directly rather than handing over snippets: is the Netlify site deployed from a repo that
    can be added, or is it drag-and-drop? Pushing the source into a repo would also make every
    future change reviewable.
-2. **Confirm the service list and service area.** The plan assumes general handyman and home
-   repair across the Tomball / NW Houston corridor, inferred from the business name and
-   location. The exact money services and the real list of cities drive every keyword target
-   in Sections 5 and 6.
+2. **The service list.** Service area is now answered — Houston, Tomball, Spring, The
+   Woodlands, Sugar Land, Cypress — and applied throughout Sections 4 and 5. Still open: the
+   specific money services. "Handyman" is a category, not a keyword set. Whether the revenue
+   comes from drywall and paint, TV mounting and furniture assembly, door and window repair,
+   fence work, or light plumbing and electrical changes which service pages get built first
+   and what the Business Profile's secondary categories should be.
 3. **NAP string.** The exact business name, public phone, and business email to use — needed
    before any citation or schema work, since the whole point is that it never varies.
 4. **Google Business Profile status.** Does one already exist, claimed or unclaimed? An
