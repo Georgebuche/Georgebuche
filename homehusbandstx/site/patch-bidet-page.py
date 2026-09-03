@@ -6,9 +6,30 @@ Run from your site folder:   python3 patch-bidet-page.py
 
 Six edits. The embedded product images are never touched.
 """
-import io, os, sys, shutil
+import io, os, sys, shutil, glob
 
-PATH = os.path.join("bidet-installation-houston", "index.html")
+# The page may live either as a folder with an index.html inside, or as a
+# single .html file at the root that Netlify's Pretty URLs serves at the same
+# address. Check the usual spots, then fall back to searching for it.
+CANDIDATES = [
+    os.path.join("bidet-installation-houston", "index.html"),
+    "bidet-installation-houston.html",
+    os.path.join("bidet-installation-houston", "bidet-installation-houston.html"),
+]
+
+def find_page():
+    for c in CANDIDATES:
+        if os.path.exists(c):
+            return c
+    for path in glob.glob("**/*.html", recursive=True):
+        try:
+            with io.open(path, encoding="utf-8") as f:
+                head = f.read(4000)
+        except (UnicodeDecodeError, OSError):
+            continue
+        if "bidet-installation-houston/" in head and "NEO 120" in head:
+            return path
+    return None
 
 EDITS = [
     # 1. Remove the "Licensed, insured" claim — Texas issues no general handyman
@@ -42,9 +63,14 @@ EDITS = [
 ]
 
 def main():
-    if not os.path.exists(PATH):
-        sys.exit("Can't find %s — run this from the folder that holds index.html "
-                 "and the bidet-installation-houston folder." % PATH)
+    PATH = find_page()
+    if PATH is None:
+        sys.exit(
+            "Can't find the bidet page. Run this from your site folder — the one\n"
+            "holding index.html. Looked for:\n  " + "\n  ".join(CANDIDATES) +
+            "\nIf it is somewhere else, tell me the exact filename and I'll adjust."
+        )
+    print("Patching %s" % PATH)
 
     with io.open(PATH, encoding="utf-8") as f:
         html = f.read()
