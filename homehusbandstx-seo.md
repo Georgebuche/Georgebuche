@@ -40,7 +40,7 @@ businesses that each need a page, and one of them is nearly uncontested.
 | Bing Places | ✅ Linked |
 | Domain active and healthy | ✅ Verified |
 | Site served from Netlify | ✅ Verified — deployed by drag-and-drop, not from a repo |
-| Apex `AAAA` record conflict | ❌ **Still live. Top priority.** (Section 3.1) |
+| Apex `AAAA` record conflict | ✅ **Deleted Sept 3 — verified gone, zone otherwise intact** |
 | Google Search Console | ❌ Not confirmed set up |
 | Indexed pages | ❌ Zero |
 | Service pages | ❌ None — Section 5 defines them |
@@ -56,7 +56,7 @@ unseen. Everything below is written to be correct regardless of what is there no
 
 ## 3. Technical foundation — unchanged from v1, still blocking
 
-### 3.1 The apex IPv6 record points at the wrong server ⚠️ DO THIS FIRST
+### 3.1 The apex IPv6 record points at the wrong server ✅ RESOLVED
 
 ```
 A     @    75.2.60.5                       → Netlify   (the real site)
@@ -495,9 +495,9 @@ nothing else is measurable.
 ## 10. Execution order
 
 **This week**
-1. **Delete the apex `AAAA` record** (3.1) — one click, and the most likely single cause of
-   zero indexation
-2. **Search Console** — verify, submit sitemap, request indexing (3.4)
+1. ~~Delete the apex `AAAA` record~~ ✅ **Done Sept 3.** Verified removed; `A @ 75.2.60.5`
+   and all mail records intact.
+2. **Search Console** — verify, request indexing (3.4) ← **current step**
 3. **Confirm `robots.txt` isn't blocking crawlers** (3.3)
 4. **Retune the GBP categories and services list** (4.1, 4.3) — settle the two licensing
    questions in 4.2 first
@@ -519,8 +519,10 @@ nothing else is measurable.
 
 ## 11. Open items
 
-1. **The apex `AAAA` deletion** (3.1) — approved, needs one manual click in hPanel. Re-request
-   indexing in Search Console straight afterward.
+1. ~~The apex `AAAA` deletion~~ ✅ **Done and verified Sept 3.** Next: confirm the fix worked
+   via Search Console → URL Inspection → **Test Live URL** on the homepage. That returns an
+   immediate verdict on whether Googlebot can now fetch the site, rather than waiting a week
+   for the indexing report.
 2. ~~Phone number and business email~~ — **answered and applied throughout: (281) 624-6402,
    support@homehusbandstx.com.** One item remains: confirm the Google Business Profile carries
    this exact number, and that its name string matches character-for-character.
