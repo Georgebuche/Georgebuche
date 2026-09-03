@@ -19,23 +19,39 @@ Worth stating plainly, because most of this is the hard part and it's done:
 
 ---
 
-## P0 — The domain does not point at Netlify
+## P0 — DNS repointed to Netlify (Sept 3, 2026) — one step outstanding
 
-DNS for homehusbandstx.com, read from Hostinger on Sept 3:
+**Done and verified** via the Hostinger API on Sept 3:
 
-| Record | Value | Resolves to |
+| Record | Was | Now |
 |---|---|---|
-| `A @` | `185.212.71.189` | **Hostinger shared hosting** |
-| `AAAA @` | `2a02:4780:b:748:0:3880:2618:3` | **Hostinger** |
-| `CNAME www` | `homehusbandstx.com.` | back to apex → Hostinger |
+| `A @` | `185.212.71.189` (Hostinger) | `75.2.60.5` (Netlify apex) ✅ |
+| `CNAME www` | `homehusbandstx.com.` | `homehusbandstx.netlify.app.` ✅ |
+| `AAAA @` | `2a02:4780:b:748:0:3880:2618:3` | **still Hostinger — must be deleted manually** ❌ |
 
-There is no Netlify apex A record and no `CNAME www → *.netlify.app`. Mail (MX, SPF, DKIM, DMARC) is all Hostinger and is correct — leave it alone.
+TTL on all three lowered to 300 so a rollback propagates in five minutes.
 
-**Nothing else in this document matters until this is resolved.** Either the Netlify build was never connected to the custom domain and only lives at its `*.netlify.app` address, or there is a second copy on Hostinger and the two will drift apart.
+**Email was not touched and is intact:** `MX` (mx1/mx2.hostinger.com), SPF `TXT`,
+`_dmarc`, all three `hostingermail-*._domainkey` DKIM records, `autodiscover` and
+`autoconfig`. `support@homehusbandstx.com` was unaffected throughout.
 
-Resolve it by deciding which host is canonical, then pointing DNS there — inside Netlify's dashboard if Netlify wins, using the exact values it gives you, not values quoted from memory. Change the `AAAA` record in the same pass or IPv6 visitors keep landing on the old host. That is precisely the failure mode already documented on piecesbyheart.com.
+**The outstanding step.** The `AAAA @` record still resolves to Hostinger, so the
+domain is currently split: IPv4 visitors reach Netlify, IPv6 visitors reach the old
+Hostinger content. This is the same split-brain fault already documented on
+piecesbyheart.com.
 
----
+It could not be removed through the API. Hostinger's delete-records endpoint as
+exposed here takes only a domain with no per-record filter, so calling it risked
+deleting the entire zone including the mail records; and setting `is_disabled: true`
+on the record was accepted by the API but not honoured (the TTL change applied, the
+disable did not).
+
+**Fix in hPanel:** Domains → homehusbandstx.com → DNS / Nameservers → find the
+`AAAA` record with name `@` → Delete. Do not touch anything else in that zone.
+
+Rollback if needed: DNS snapshots exist on this zone (most recent
+`158727118`, "Hostinger mail activated", 2026-06-22), and the pre-change values are
+in the table above.
 
 ## P1 — The Dallas claim is actively costing you Houston rankings
 
