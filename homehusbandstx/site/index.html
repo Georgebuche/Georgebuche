@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critter Proofing &amp; Home Sealing | HomeHusbandsTx — Houston Metro</title>
+<meta name="description" content="Chemical-free critter proofing across the Houston metro — we seal every gap rodents use to get in, no poison and no chemicals. Plus the flat-rate home services we’re known for: bidet installs, drain lines, dryer vents and more.">
+<link rel="canonical" href="https://homehusbandstx.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#132747">
+
+<!-- Icons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HomeHusbandsTx">
+<meta property="og:url" content="https://homehusbandstx.com/">
+<meta property="og:title" content="Chemical-Free Critter Proofing | HomeHusbandsTx">
+<meta property="og:description" content="We seal every gap rodents use to get in — no poison, no chemicals, no monthly contract. Serving the Houston metro.">
+<meta property="og:image" content="https://homehusbandstx.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HomeHusbandsTx — chemical-free critter proofing, Houston metro">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chemical-Free Critter Proofing | HomeHusbandsTx">
+<meta name="twitter:description" content="We seal every gap rodents use to get in — no poison, no chemicals, no monthly contract. Houston metro.">
+<meta name="twitter:image" content="https://homehusbandstx.com/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132747; --navy-deep:#0E1D33; --ink:#0B1626;
+    --red:#D63730; --red-deep:#B22B25;
+    --gray:#7A8592; --gray-line:#D8DEE6;
+    --paper:#FBFBFC; --paper-2:#F1F4F8;
+    --manila:#E7DFCB; --manila-line:#C9BE9F;
+    --tag-ink:#3D4A2E;
+    --white:#F7FAFF;
+    --shadow:0 18px 50px -20px rgba(19,39,71,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--navy); background:var(--paper);
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,.display{font-family:'Archivo',sans-serif;line-height:1.03;letter-spacing:-.02em}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:40;background:rgba(251,251,252,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Archivo';font-weight:800;
+    font-size:19px;letter-spacing:-.01em}
+  .brand .tx{color:var(--red)}
+  .brand svg{display:block}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;
+    font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px;transition:.18s}
+  .nav-cta:hover{background:var(--red-deep);transform:translateY(-1px)}
+  .nav-links{display:flex;gap:26px;font-weight:600;font-size:14.5px;color:var(--navy)}
+  .nav-links a{opacity:.78;transition:.15s}.nav-links a:hover{opacity:1}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 68px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
+  .eyebrow{font-family:'IBM Plex Mono';font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--red);font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--red)}
+  .hero h1{font-size:clamp(38px,5.4vw,62px);font-weight:900}
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero p.lead{font-size:19px;color:#42546b;margin:24px 0 34px;max-width:33em}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15.5px;
+    padding:15px 26px;border-radius:999px;transition:.18s;cursor:pointer;border:none}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(214,55,48,.6)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--gray-line)}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-2px)}
+  .hero-note{margin-top:22px;font-size:13.5px;color:var(--gray);display:flex;gap:8px;align-items:center}
+
+  /* ---------- the signature: service tag ---------- */
+  .tag-hang{display:flex;justify-content:center;perspective:900px}
+  .tag{position:relative;width:290px;background:var(--manila);
+    border-radius:12px 12px 14px 14px;padding:30px 26px 26px;
+    box-shadow:var(--shadow);transform:rotate(-3deg);
+    background-image:repeating-linear-gradient(transparent,transparent 33px,rgba(120,110,80,.16) 33px,rgba(120,110,80,.16) 34px);
+    border:1px solid var(--manila-line)}
+  .tag::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);
+    width:26px;height:26px;border-radius:50%;background:var(--paper);
+    box-shadow:inset 0 0 0 3px var(--manila-line),inset 0 2px 4px rgba(0,0,0,.15)}
+  .tag-string{position:absolute;top:-52px;left:50%;width:2px;height:64px;
+    background:linear-gradient(var(--red),var(--red-deep));transform:translateX(-50%) rotate(3deg);transform-origin:bottom}
+  .tag-head{margin-top:22px;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.18em;
+    color:var(--tag-ink);text-transform:uppercase;text-align:center;opacity:.8}
+  .tag-title{font-family:'Archivo';font-weight:800;font-size:20px;text-align:center;color:#2b3550;
+    margin:6px 0 20px;letter-spacing:-.01em}
+  .tag-row{font-family:'IBM Plex Mono';font-size:12.5px;color:#3a4256;display:flex;
+    justify-content:space-between;padding:7px 0;line-height:1.9}
+  .tag-row b{font-weight:600}
+  .tag-check{color:var(--red);font-weight:700}
+  .tag-due{margin-top:14px;padding-top:12px;border-top:1.5px dashed var(--manila-line);
+    text-align:center;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.14em;color:var(--tag-ink)}
+  .tag-due strong{display:block;font-size:17px;color:var(--red-deep);letter-spacing:0;margin-top:4px}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:52px}
+    .tag-hang{margin-top:10px}
+  }
+
+  /* ---------- section framing ---------- */
+  section{padding:78px 0}
+  .sec-head{max-width:34em;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(29px,3.6vw,42px);font-weight:800}
+  .sec-head p{color:#42546b;font-size:17.5px;margin-top:16px}
+
+  /* ---------- services grid ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .svc{background:#fff;border:1px solid var(--gray-line);border-radius:14px;padding:24px 24px 22px;
+    display:flex;flex-direction:column;transition:.2s;position:relative;overflow:hidden}
+  .svc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);
+    transform:scaleY(0);transform-origin:top;transition:.22s}
+  .svc:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+  .svc:hover::before{transform:scaleY(1)}
+  .svc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .svc h3{font-size:18.5px;font-weight:700;letter-spacing:-.01em}
+  .svc .price{font-family:'IBM Plex Mono';font-weight:600;font-size:15px;color:var(--red);white-space:nowrap}
+  .svc .price small{color:var(--gray);font-weight:400;font-size:11px;display:block;text-align:right}
+  .svc p{color:#54627a;font-size:14.5px;margin-top:9px}
+  .svc .flag{margin-top:auto;padding-top:14px;font-family:'IBM Plex Mono';font-size:11px;
+    letter-spacing:.06em;color:var(--gray);text-transform:uppercase}
+  .flagship{background:linear-gradient(140deg,#fff 55%,#fdf3f2);border-color:#f3cfcc}
+  .flagship .badge{display:inline-block;background:var(--red);color:#fff;font-family:'IBM Plex Mono';
+    font-size:10.5px;letter-spacing:.14em;padding:4px 10px;border-radius:5px;text-transform:uppercase;margin-bottom:10px}
+  @media(max-width:680px){.svc-grid{grid-template-columns:1fr}}
+
+  /* ---------- annual plan (inverted) ---------- */
+  .plan{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+  .plan::after{content:"";position:absolute;right:-140px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(214,55,48,.20),transparent 68%)}
+  .plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;z-index:2}
+  .plan .eyebrow{color:#ff8c86}.plan .eyebrow::before{background:#ff8c86}
+  .plan h2{font-size:clamp(30px,3.8vw,44px);font-weight:900;color:#fff}
+  .plan .lead{color:#b9c6d8;font-size:18px;margin:20px 0 26px;max-width:30em}
+  .incl{list-style:none;display:grid;gap:12px;margin-bottom:8px}
+  .incl li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:#dbe4f0}
+  .incl li svg{flex:none;margin-top:3px}
+  .promise{margin-top:26px;padding:18px 20px;background:rgba(255,255,255,.06);border-left:3px solid var(--red);
+    border-radius:0 10px 10px 0;font-size:15px;color:#e6ecf5}
+  .promise b{color:#fff}
+  .price-card{background:#fff;color:var(--navy);border-radius:18px;padding:34px 32px;box-shadow:var(--shadow)}
+  .price-card .kicker{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gray)}
+  .price-card .amt{font-family:'Archivo';font-weight:900;font-size:60px;letter-spacing:-.03em;
+    line-height:1;margin:8px 0 2px}
+  .price-card .amt span{font-size:22px;color:var(--gray);font-weight:600}
+  .price-card .sub{color:#54627a;font-size:14.5px;margin-bottom:22px}
+  .price-card .compare{font-family:'IBM Plex Mono';font-size:12.5px;color:var(--gray);
+    margin-top:16px;text-align:center}
+  .price-card .compare s{color:#aab3bf}
+  .price-card .btn{width:100%;justify-content:center;margin-top:4px}
+  .prepay{margin-top:18px;padding:16px 18px;background:var(--paper-2);
+    border:1px dashed var(--manila-line);border-radius:12px}
+  .prepay .pp-tag{display:inline-block;background:var(--navy);color:#fff;font-family:'IBM Plex Mono';
+    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:5px;margin-bottom:9px}
+  .prepay .pp-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .prepay .pp-amt{font-family:'Archivo';font-weight:900;font-size:27px;letter-spacing:-.02em;color:var(--navy)}
+  .prepay .pp-was{font-family:'IBM Plex Mono';font-size:13px;color:#aab3bf;text-decoration:line-through}
+  .prepay .pp-save{font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--red);font-weight:600}
+  .prepay p{font-size:13.5px;color:#54627a;margin-top:7px;line-height:1.55}
+  .prepay .pp-terms{font-size:12.5px;color:#6b7891;margin-top:10px;padding-top:10px;
+    border-top:1px solid var(--gray-line)}
+  .prepay .pp-terms b{color:var(--navy)}
+  @media(max-width:820px){.plan-grid{grid-template-columns:1fr;gap:40px}}
+
+  /* ---------- honesty / trust ---------- */
+  .honest{background:var(--paper-2)}
+  .honest-box{background:#fff;border:1px solid var(--gray-line);border-radius:16px;
+    padding:34px 36px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start}
+  .honest-box .mark{width:52px;height:52px;flex:none}
+  .honest h3{font-size:22px;font-weight:800;margin-bottom:10px}
+  .honest p{color:#42546b;font-size:15.5px;max-width:60ch}
+  .honest p+p{margin-top:12px}
+  @media(max-width:620px){.honest-box{grid-template-columns:1fr}}
+
+  /* ---------- faq ---------- */
+  .faq-list{display:grid;gap:0;border-top:1px solid var(--gray-line)}
+  details{border-bottom:1px solid var(--gray-line);padding:4px 0}
+  summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-family:'Archivo';
+    font-weight:700;font-size:18px;position:relative;transition:.15s}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:6px;top:18px;font-size:24px;color:var(--red);
+    font-family:'IBM Plex Mono';transition:.2s}
+  details[open] summary::after{content:"–"}
+  summary:hover{color:var(--red)}
+  details p{padding:0 40px 22px 0;color:#54627a;font-size:15.5px}
+
+  /* ---------- footer cta ---------- */
+  .foot-cta{background:var(--ink);color:#fff;text-align:center;border-radius:22px;
+    padding:58px 32px;margin:0 auto;max-width:1120px}
+  .foot-cta h2{font-size:clamp(28px,3.6vw,40px);font-weight:900;color:#fff}
+  .foot-cta p{color:#9fb0c6;font-size:17px;margin:16px auto 30px;max-width:34em}
+  footer{padding:46px 0 40px;color:var(--gray);font-size:14px}
+  .foot-row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+  .area{font-family:'IBM Plex Mono';font-size:12.5px;letter-spacing:.04em;color:var(--gray);max-width:42ch}
+
+  /* quarterly plan visits */
+  .visits{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 22px}
+  .visit{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px}
+  .visit .vtag{display:inline-block;background:var(--red);color:#fff;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:6px;margin-bottom:9px}
+  .visit h4{font-family:'Archivo';font-size:16px;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
+  .visit p{color:#b9c6d8;font-size:13.5px;line-height:1.5}
+  .incl-cap{font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#8fa2ba;margin-bottom:12px}
+  .price-card .single{margin-top:14px;padding-top:14px;border-top:1px solid var(--gray-line);font-size:13.5px;color:#54627a;text-align:center}
+  .price-card .single b{color:var(--navy)}
+  @media(max-width:820px){.visits{grid-template-columns:1fr}}
+
+  /* booking form */
+  .book{background:var(--paper-2)}
+  .book-in{max-width:720px;margin:0 auto}
+  .book form{display:grid;gap:16px;margin-top:8px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ffield{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .ffield.full{grid-column:1/-1}
+  .book label{font-size:13.5px;font-weight:600;color:var(--navy)}
+  .book .req{color:var(--red)}
+  .book input,.book select,.book textarea{font-family:'Inter';font-size:16px;padding:13px 14px;
+    border:1.5px solid var(--gray-line);border-radius:11px;background:#fff;color:var(--ink);width:100%;min-width:0;max-width:100%}
+  .book input:focus,.book select:focus,.book textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(19,39,71,.08)}
+  .book textarea{resize:vertical;min-height:84px}
+  .book .btn{justify-self:start;border:none;cursor:pointer;margin-top:4px}
+  .call-alt{font-size:14px;color:var(--gray);margin-top:2px}
+  .call-alt a{color:var(--navy);font-weight:700}
+  .book .ok{display:none;background:#E8F6EC;border:1px solid #BFE6C9;color:#1C6B34;padding:16px 18px;border-radius:12px;font-size:15px;text-align:center;margin-bottom:8px}
+  .book .ok.show{display:block}
+  @media(max-width:640px){.frow{grid-template-columns:1fr}}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(18px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}.btn:hover,.svc:hover,.nav-cta:hover{transform:none}}
+
+  /* ---------- critter proofing (hero service) ---------- */
+  .critter{background:linear-gradient(180deg,#fff,var(--paper-2))}
+  .critter-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:start}
+  .seal-list{list-style:none;display:grid;gap:15px;margin-top:4px}
+  .seal-list li{display:flex;gap:14px;align-items:flex-start}
+  .seal-list .ic{flex:none;width:38px;height:38px;border-radius:10px;background:#fdf3f2;
+    display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .seal-list h4{font-family:'Archivo';font-size:16px;font-weight:700;color:var(--navy);letter-spacing:-.01em}
+  .seal-list p{font-size:14px;color:#54627a;margin-top:2px;line-height:1.5}
+  .how-card{background:var(--navy);color:var(--white);border-radius:18px;padding:32px 30px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .how-card::after{content:"";position:absolute;right:-120px;top:-100px;width:360px;height:360px;
+    background:radial-gradient(circle,rgba(214,55,48,.18),transparent 68%)}
+  .how-card .kicker{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:#8fa2ba;position:relative;z-index:2}
+  .how-steps{display:grid;gap:16px;margin:18px 0 22px;position:relative;z-index:2}
+  .how-step{display:flex;gap:14px;align-items:flex-start}
+  .how-step .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;
+    font-family:'IBM Plex Mono';font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .how-step h4{font-family:'Archivo';font-size:16px;color:#fff;margin-bottom:2px;letter-spacing:-.01em}
+  .how-step p{color:#b9c6d8;font-size:14px;line-height:1.5}
+  .how-price{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.14);padding-top:20px;margin-top:2px}
+  .how-price .amt{font-family:'Archivo';font-weight:900;font-size:32px;color:#fff;letter-spacing:-.02em;line-height:1}
+  .how-price .amt span{font-size:15px;color:#8fa2ba;font-weight:600}
+  .how-price .btn{width:100%;justify-content:center;margin-top:16px}
+  .seal-guarantee{margin-top:30px;padding:18px 22px;background:#fdf3f2;border-left:3px solid var(--red);
+    border-radius:0 12px 12px 0;font-size:15px;color:#5a2a27;line-height:1.6}
+  .seal-guarantee b{color:var(--red-deep)}
+  .more-link{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-family:'Archivo';
+    font-weight:700;font-size:16px;color:var(--red)}
+  .more-link:hover{text-decoration:underline}
+  @media(max-width:820px){.critter-grid{grid-template-columns:1fr;gap:38px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "HomeAndConstructionBusiness",
+        "LocalBusiness"
+      ],
+      "@id": "https://homehusbandstx.com/#business",
+      "name": "HomeHusbandsTx",
+      "description": "Chemical-free critter proofing and flat-rate home maintenance serving the Houston metro. We remove rodents and seal the structural gaps they use to get in — no poison, no monthly spray contract.",
+      "url": "https://homehusbandstx.com/",
+      "telephone": "+1-281-624-6402",
+      "email": "support@homehusbandstx.com",
+      "image": "https://homehusbandstx.com/og-image.png",
+      "logo": "https://homehusbandstx.com/apple-touch-icon.png",
+      "priceRange": "$49-$1500",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tomball",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Tomball", "addressRegion": "TX" },
+        { "@type": "City", "name": "Spring", "addressRegion": "TX" },
+        { "@type": "City", "name": "The Woodlands", "addressRegion": "TX" },
+        { "@type": "City", "name": "Cypress", "addressRegion": "TX" },
+        { "@type": "City", "name": "Katy", "addressRegion": "TX" },
+        { "@type": "City", "name": "Magnolia", "addressRegion": "TX" },
+        { "@type": "City", "name": "Houston", "addressRegion": "TX" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Critter proofing & home services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "url": "https://homehusbandstx.com/critter-proofing/",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "450",
+              "maxPrice": "1500",
+              "priceCurrency": "USD"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Chemical-free critter proofing & structural sealing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "149",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bidet supply & installation"
+            },
+            "url": "https://homehusbandstx.com/bidet-installation-houston/"
+          },
+          {
+            "@type": "Offer",
+            "price": "199",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Quarterly home maintenance plan — one visit every quarter"
+            },
+            "description": "$199 per quarterly visit, or $716 prepaid for the year (10% off)."
+          },
+          {
+            "@type": "Offer",
+            "price": "99",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dryer vent cleaning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "89",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AC filter replacement"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "49",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AC condensate drain-line flush"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "49",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Smoke & CO detector battery replacement and test"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Attic inspection (free with any visit)"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Garbage disposal reset & check (free with any visit)"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "716",
+            "priceCurrency": "USD",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Quarterly maintenance plan — prepaid annual (10% discount)"
+            },
+            "description": "Four quarterly visits prepaid at 10% off. Non-refundable but transferable to a new address, a new owner, or another service."
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://homehusbandstx.com/#website",
+      "url": "https://homehusbandstx.com/",
+      "name": "HomeHusbandsTx",
+      "publisher": {
+        "@id": "https://homehusbandstx.com/#business"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://homehusbandstx.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you use poison or chemicals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — our critter proofing is completely chemical-free. We remove the critters and seal the gaps they use to get in, with carpentry-grade materials like steel mesh, hardware cloth, and door sweeps. Nothing toxic in your home, nothing dying in your walls, no monthly spray contract."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if critters are already inside?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We remove them and seal the structure behind them — chemical-free — so nothing gets back in. That's the permanent fix: get them out, then close every gap they used, for good."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the seal hold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because it's physical sealing and not a treatment that wears off, a proper exclusion lasts for years — and we back it with a seal guarantee. If something we sealed opens back up, we come fix it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How soon can you come out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most one-off jobs are booked within two to three days. Plan visits run on a quarterly cycle — and we set the next date before we leave, so it never slips."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between booking à la carte and the plan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "À la carte, you call when something needs doing and pay the flat rate for that job. The plan bundles the whole list into one scheduled visit every quarter at $199 — versus $286 booking those same services separately — with the filter and batteries supplied, the attic inspection and disposal check included free, and all four dates set in advance. Pay per visit, or prepay the year for $716 and save 10%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work on rental properties?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the plan suits landlords well. Documented quarterly maintenance helps with tenant disputes and insurance claims, and we can send the visit summary to you and the tenant separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you charge a trip fee or extra for weekends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No trip fee, and the flat rate is the same whichever day we come out. What we quote is what you pay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I prepay the year and then cancel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prepaid years aren't refundable, but they're fully transferable — you never lose the value. Unused visits can move to a new address if you move, transfer to the new owner if you sell the home, or be applied at the same value toward any other service we offer, including critter proofing. If you'd rather keep the flexibility to stop, pay per visit at $199 instead and cancel any time before your next one."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="HomeHusbandsTX home">
+      <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,10 82,46 18,46" fill="#D63730"/>
+        <rect x="26" y="42" width="48" height="46" rx="6" fill="#132747"/>
+        <rect x="44" y="52" width="12" height="12" rx="3" fill="#F7FAFF"/>
+        <rect x="42" y="66" width="16" height="20" rx="8" fill="#F7FAFF"/>
+      </svg>
+      <span>HOMEHUSBANDS<span class="tx">TX</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="/critter-proofing/">Critter proofing</a>
+      <a href="#services">Home services</a>
+      <a href="#plan">Quarterly plan</a>
+      <a href="/bidet-installation-houston/">Bidet install</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-cta" href="#book">Request service</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Houston metro · Chemical-free critter proofing</div>
+      <h1>A gap the size of a dime is <em>all a mouse needs.</em></h1>
+      <p class="lead">We find every one — weep holes, roof lines, pipe gaps, door sweeps — and seal it shut
+        with carpentry-grade materials that keep rodents and critters out for good. No poison. No chemicals.
+        No monthly contract. And while we’re there, the home services you already know us for.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#book">Get a free walkthrough →</a>
+        <a class="btn btn-ghost" href="/critter-proofing/">See what we seal</a>
+      </div>
+      <div class="hero-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#D63730" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Chemical-free · Remove &amp; seal · Backed by our seal guarantee
+      </div>
+    </div>
+
+    <div class="tag-hang">
+      <div class="tag" role="img" aria-label="HomeHusbandsTX service record tag">
+        <span class="tag-string"></span>
+        <div class="tag-head">— Seal Record —</div>
+        <div class="tag-title">HOMEHUSBANDS<span style="color:#D63730">TX</span></div>
+        <div class="tag-row"><b>Weep holes</b><span class="tag-check">✓ screened</span></div>
+        <div class="tag-row"><b>Roof line</b><span class="tag-check">✓ sealed</span></div>
+        <div class="tag-row"><b>Pipe gaps</b><span class="tag-check">✓ closed</span></div>
+        <div class="tag-row"><b>Vents</b><span class="tag-check">✓ meshed</span></div>
+        <div class="tag-row"><b>Door sweeps</b><span class="tag-check">✓ fitted</span></div>
+        <div class="tag-row"><b>Garage gaps</b><span class="tag-check">✓ sealed</span></div>
+        <div class="tag-row"><b>Attic</b><span class="tag-check">✓ secured</span></div>
+        <div class="tag-due">Home sealed<strong>GUARANTEED ✓</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CRITTER PROOFING (HERO SERVICE) ============ -->
+<section id="critter" class="critter">
+  <div class="wrap">
+    <div class="sec-head rv" style="max-width:42em">
+      <div class="eyebrow">The specialty · Chemical-free</div>
+      <h2>Critter proofing, done right: we seal — we don’t spray.</h2>
+      <p>Rodents don’t need an open door — just a gap. A house mouse fits through a hole the size of a dime, and
+        every Texas home has a dozen of them. We find each one and seal it shut with carpentry-grade materials, so
+        critters can’t get back in — no poison, no chemicals, no monthly spray contract.</p>
+    </div>
+
+    <div class="critter-grid">
+      <div class="rv">
+        <div class="incl-cap" style="color:var(--gray)">What we seal</div>
+        <ul class="seal-list">
+          <li>
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#D63730" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><h4>Foundation gaps &amp; weep holes</h4><p>Steel mesh and weep-hole covers close the dime-sized openings mice walk straight through.</p></div>
+          </li>
+          <li>
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#D63730" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><h4>Roof lines, soffits &amp; eaves</h4><p>Where the roof meets the wall is a highway in. We flash and mesh those gaps shut.</p></div>
+          </li>
+          <li>
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#D63730" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><h4>Pipe &amp; utility penetrations</h4><p>Every line into the house leaves a gap around it. We pack and seal them with steel wool and sealant.</p></div>
+          </li>
+          <li>
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#D63730" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><h4>Vents &amp; attic screens</h4><p>Dryer, gable, and attic vents get galvanized hardware-cloth screens that breathe but block.</p></div>
+          </li>
+          <li>
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#D63730" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><h4>Garage door corners &amp; gaps</h4><p>The number-one way in. Corner seals and gap kits close the openings at the slab and the sides.</p></div>
+          </li>
+          <li>
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#D63730" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><h4>Exterior door sweeps</h4><p>A worn sweep leaves a quarter-inch gap under the door. We fit new ones that seal to the threshold.</p></div>
+          </li>
+        </ul>
+        <a class="more-link" href="/critter-proofing/">Full critter proofing details, pricing &amp; FAQ →</a>
+      </div>
+
+      <div class="how-card rv">
+        <div class="kicker">How it works</div>
+        <div class="how-steps">
+          <div class="how-step"><span class="n">1</span><div><h4>Free walkthrough</h4><p>We map every gap a rodent could use — inside and out — and show you.</p></div></div>
+          <div class="how-step"><span class="n">2</span><div><h4>One flat quote</h4><p>A single price for the whole seal. No hourly meter, no surprise add-ons.</p></div></div>
+          <div class="how-step"><span class="n">3</span><div><h4>We seal it — guaranteed</h4><p>Carpentry-grade materials at every entry point, backed by our seal guarantee.</p></div></div>
+        </div>
+        <div class="how-price">
+          <div class="amt">Free<span> walkthrough + flat quote</span></div>
+          <p style="color:#b9c6d8;font-size:13.5px;margin-top:8px;line-height:1.6">One price for the whole seal — most homes land between <b style="color:#fff">$450 and $1,500</b> depending on size and entry points.</p>
+          <a class="btn btn-primary" href="#book">Book my free walkthrough →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOME SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Already on-site</div>
+      <h2>While we’re sealing — the home services we’re known for.</h2>
+      <p>The home services we’re known for — knocked out on the same visit, one crew, one trip.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc flagship rv">
+        <span class="badge">Most booked</span>
+        <div class="svc-top">
+          <h3>Bidet installation</h3>
+          <div class="price">$149 flat<small>any install</small></div>
+        </div>
+        <p>Your bidet fitted clean and leak-free — unit, fittings, and labor included, no trip fee. Flat rate for any install, however many bathrooms. Already own the bidet? We’ll install it for $89.</p>
+        <a class="flag" href="/bidet-installation-houston/" style="color:var(--red);text-decoration:none">See the bidet page &amp; book →</a>
+      </div>
+
+      <div class="svc rv">
+        <div class="svc-top"><h3>AC drain-line flush</h3><div class="price">$49</div></div>
+        <p>Texas heat and humidity clog condensate lines fast — a backed-up line means a soaked ceiling. We clear and flush it before it overflows the pan.</p>
+        <div class="flag">Highest-value in summer</div>
+      </div>
+
+      <div class="svc rv">
+        <div class="svc-top"><h3>Dryer vent cleaning</h3><div class="price">$99</div></div>
+        <p>Lint buildup is the leading cause of dryer fires and the reason clothes take two cycles. We clear the full run from drum to exterior vent.</p>
+        <div class="flag">Safety + efficiency</div>
+      </div>
+
+      <div class="svc rv">
+        <div class="svc-top"><h3>AC filter replacement</h3><div class="price">$89</div></div>
+        <p>Right-sized filter supplied and swapped, old one hauled off. A clean filter is the cheapest thing standing between you and a strained system.</p>
+        <div class="flag">Filter supplied</div>
+      </div>
+
+      <div class="svc rv">
+        <div class="svc-top"><h3>Garbage disposal reset &amp; check</h3><div class="price">Free<small>with any visit</small></div></div>
+        <p>Jammed, humming, or leaking? We clear the jam, reset it, and check the seals — or tell you straight if it’s time for a replacement.</p>
+        <div class="flag">Clear · reset · reseal</div>
+      </div>
+
+      <div class="svc rv">
+        <div class="svc-top"><h3>Smoke &amp; CO detector service</h3><div class="price">$49</div></div>
+        <p>Fresh batteries in every smoke and CO detector, each unit tested. Scoped as replace-and-test — not an inspection or certification.</p>
+        <div class="flag">Replace + test, in writing</div>
+      </div>
+
+      <div class="svc rv">
+        <div class="svc-top"><h3>Attic inspection</h3><div class="price">Free<small>with any visit</small></div></div>
+        <p>A visual once-over of your attic — insulation coverage, daylight gaps, and obvious signs of moisture or pests — so you catch small problems early. A homeowner’s check, not a licensed inspection.</p>
+        <div class="flag">Visual check · scope in writing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUARTERLY PLAN ============ -->
+<section id="plan" class="plan">
+  <div class="wrap plan-grid">
+    <div class="rv">
+      <div class="eyebrow">The maintenance plan</div>
+      <h2>Four visits a year. One every quarter.</h2>
+      <p class="lead">The routine jobs every Texas house needs and every homeowner forgets —
+        handled every three months, so nothing sits long enough to turn into a repair bill.</p>
+      <div class="visits">
+        <div class="visit"><span class="vtag">Q1 · Winter</span><h4>Start-of-year check</h4>
+          <p>Fresh filter, detectors tested, disposal checked, and an attic look for anything winter moved in.</p></div>
+        <div class="visit"><span class="vtag">Q2 · Spring</span><h4>Pre-summer tune-up</h4>
+          <p>Drain line flushed and dryer vent cleared before your AC and laundry work their hardest.</p></div>
+        <div class="visit"><span class="vtag">Q3 · Summer</span><h4>Peak-heat visit</h4>
+          <p>Drain line re-flushed mid-season, filter swapped, attic checked for heat and moisture damage.</p></div>
+        <div class="visit"><span class="vtag">Q4 · Fall</span><h4>Post-summer check</h4>
+          <p>Fresh filter, detectors re-tested, and a once-over to catch whatever the Texas summer left behind.</p></div>
+      </div>
+      <div class="incl-cap">Every visit includes:</div>
+      <ul class="incl">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#ff8c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>AC filter replaced &amp; supplied</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#ff8c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>AC condensate drain line flushed</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#ff8c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Dryer vent cleared end to end</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#ff8c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Smoke &amp; CO detector batteries replaced and tested</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#ff8c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Garbage disposal reset &amp; checked</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#ff8c86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Attic checked — insulation, moisture &amp; pest signs</li>
+        </ul>
+      <div class="promise">
+        <b>We schedule all four visits up front.</b> So “I forgot” never turns into a
+        flooded ceiling pan or a lint-packed dryer vent. You get a reminder, not a homework assignment.
+      </div>
+    </div>
+
+    <div class="price-card rv">
+      <div class="kicker">Quarterly maintenance</div>
+      <div class="amt">$199<span>/visit</span></div>
+      <div class="sub">One visit every quarter — all six services · filter &amp; batteries supplied · attic check and disposal service included free · pay per visit or yearly</div>
+      <a class="btn btn-primary" href="#book">Start the plan →</a>
+      <div class="compare">Booked separately these run <s>$286</s> a visit — the plan saves you $87 every quarter and books all four dates up front.</div>
+
+      <div class="prepay">
+        <span class="pp-tag">Pay yearly · save 10%</span>
+        <div class="pp-row">
+          <span class="pp-amt">$716<span style="font-size:15px;color:var(--gray);font-weight:600">/year</span></span>
+          <span class="pp-was">$796</span>
+          <span class="pp-save">Save $80</span>
+        </div>
+        <p>Prepay all four visits and take 10% off. Same four dates, same services — one payment instead of four.</p>
+        <p class="pp-terms"><b>Prepaid years aren’t refundable, but they are transferable.</b> Unused visits move with you — to a new address, to a new owner if you sell, or to any other service we offer at the same value.</p>
+      </div>
+
+      <div class="single">No contract to sign. <b>Paying per visit? Cancel any time before your next one.</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HONESTY ============ -->
+<section class="honest">
+  <div class="wrap">
+    <div class="honest-box rv">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,10 82,46 18,46" fill="#D63730"/>
+        <rect x="26" y="42" width="48" height="46" rx="6" fill="#132747"/>
+        <rect x="42" y="60" width="16" height="26" rx="8" fill="#F7FAFF"/>
+      </svg>
+      <div>
+        <h3>Straight about what we do — and what we don’t.</h3>
+        <p>Our critter proofing is <strong>completely chemical-free</strong> — we remove the critters and seal the structure behind them so they can’t get back in, with no poison, no sprays, and nothing toxic left in your home or dying in your walls. It’s hands-on carpentry and exclusion, not chemical extermination — and Texas doesn’t require a structural pest control license for chemical-free work like this.</p>
+        <p>Texas doesn’t issue a general handyman license either, and we don’t perform work reserved for licensed
+          plumbing, electrical, HVAC, or irrigation contractors. Detector work is scoped as <strong>replace and test</strong>,
+          put in writing — never sold as an inspection. Clear scope is how you avoid the surprises that make home
+          services frustrating in the first place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="eyebrow">Good to know</div>
+      <h2>Questions homeowners actually ask</h2>
+    </div>
+    <div class="faq-list rv">
+      <details open>
+        <summary>Do you use poison or chemicals?</summary>
+        <p>No — our critter proofing is completely chemical-free. We remove the critters and seal the gaps they use to get in, with carpentry-grade materials like steel mesh, hardware cloth, and door sweeps. Nothing toxic in your home, nothing dying in your walls, no monthly spray contract.</p>
+      </details>
+      <details>
+        <summary>What if critters are already inside?</summary>
+        <p>We remove them and seal the structure behind them — chemical-free — so nothing gets back in. That’s the permanent fix: get them out, then close every gap they used, for good.</p>
+      </details>
+      <details>
+        <summary>How long does the seal hold?</summary>
+        <p>Because it’s physical sealing and not a treatment that wears off, a proper exclusion lasts for years — and we back it with a seal guarantee. If something we sealed opens back up, we come fix it.</p>
+      </details>
+      <details>
+        <summary>How soon can you come out?</summary>
+        <p>Most one-off jobs are booked within two to three days. Plan visits run on a quarterly cycle — and we set the next date before we leave, so it never slips.</p>
+      </details>
+      <details>
+        <summary>What’s the difference between booking à la carte and the plan?</summary>
+        <p>À la carte, you call when something needs doing and pay the flat rate for that job. The plan bundles the whole list into one scheduled visit every quarter at $199 — versus $286 booking those same services separately — with the filter and batteries supplied, the attic inspection and disposal check included free, and all four dates set in advance. Pay per visit, or prepay the year for $716 and save 10%.</p>
+      </details>
+      <details>
+        <summary>Do you work on rental properties?</summary>
+        <p>Yes — the plan suits landlords well. Documented quarterly maintenance helps with tenant disputes and insurance claims, and we can send the visit summary to you and the tenant separately.</p>
+      </details>
+      <details>
+        <summary>Do you charge a trip fee or extra for weekends?</summary>
+        <p>No trip fee, and the flat rate is the same whichever day we come out. What we quote is what you pay.</p>
+      </details>
+      <details>
+        <summary>What happens if I prepay the year and then cancel?</summary>
+        <p>Prepaid years aren't refundable, but they're fully transferable — you never lose the value. Unused visits can move to a new address if you move, transfer to the new owner if you sell the home, or be applied at the same value toward any other service we offer, including critter proofing. If you'd rather keep the flexibility to stop, pay per visit at $199 instead and cancel any time before your next one.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING FORM ============ -->
+<section class="book" id="book">
+  <div class="wrap book-in">
+    <div class="sec-head rv" style="text-align:center;margin:0 auto 26px;max-width:34em">
+      <div class="eyebrow" style="justify-content:center">Book it</div>
+      <h2>Request a service or start your plan</h2>
+      <p>Tell us what you need — we’ll text back to confirm a time and send a Square invoice with a small deposit to lock it in.</p>
+    </div>
+    <div class="ok" id="ok">Thanks! We’ve got your request. We’ll text to confirm your time and send a Square invoice to reserve it.</div>
+    <form id="svcForm" method="POST" name="service-request" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="service-request">
+      <p hidden><label>Don’t fill this out if you’re human: <input name="bot-field"></label></p>
+      <div class="ffield full"><label>What do you need? <span class="req">*</span></label>
+        <select name="service" required>
+          <option value="">Choose a service…</option>
+          <option>Critter proofing — whole-home seal</option>
+          <option>Critter proofing — single area / spot seal</option>
+          <option>Quarterly Maintenance Plan — $199 per visit</option>
+          <option>Quarterly Maintenance Plan — prepaid year, $716 (save 10%, non-refundable)</option>
+          <option>AC drain-line flush — $49</option>
+          <option>Dryer vent cleaning — $99</option>
+          <option>AC filter replacement — $89</option>
+          <option>Smoke &amp; CO detector service — $49</option>
+          <option>Garbage disposal reset &amp; check — free with any visit</option>
+          <option>Attic inspection — free with any visit</option>
+          <option>Bidet installation</option>
+          <option>Multiple / not sure</option>
+        </select>
+      </div>
+      <div class="frow">
+        <div class="ffield"><label>Full name <span class="req">*</span></label><input name="name" required></div>
+        <div class="ffield"><label>Phone <span class="req">*</span></label><input name="phone" type="tel" required></div>
+      </div>
+      <div class="ffield full"><label>Email <span class="req">*</span></label><input name="email" type="email" required></div>
+      <div class="ffield full"><label>Service address <span class="req">*</span></label><input name="address" placeholder="Street, City, TX, ZIP" required></div>
+      <div class="frow">
+        <div class="ffield"><label>Preferred date</label><input name="date" id="svcDate" type="date"></div>
+        <div class="ffield"><label>Preferred arrival window</label>
+          <select name="window"><option>Morning · 8:00 AM – 12:00 PM</option><option>Midday · 12:00 PM – 4:00 PM</option><option>Afternoon · 2:00 PM – 6:00 PM</option><option>Flexible · earliest available</option></select>
+        </div>
+      </div>
+      <div class="ffield full"><label>Anything we should know?</label><textarea name="notes"></textarea></div>
+      <button class="btn btn-primary" type="submit" id="svcSubmit">Request my service</button>
+      <p class="call-alt">Prefer to talk? Call or text <a href="tel:+12816246402">(281) 624-6402</a> · Mon–Sat 8am–6pm</p>
+    </form>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="foot-cta rv">
+    <h2>Seal them out for good.</h2>
+    <p>Book a free walkthrough — chemical-free critter proofing across the Houston metro, plus the home services you already know us for.</p>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn btn-primary" href="#book">Request a service →</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)" href="#plan">Start the quarterly plan</a>
+    </div>
+    <p style="color:#7d8ea6;font-size:13.5px;margin-top:22px;font-family:'IBM Plex Mono'">Mon–Sat · 8:00 AM–6:00 PM · support@homehusbandstx.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="brand" style="font-size:16px">
+      <svg width="24" height="24" viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,10 82,46 18,46" fill="#D63730"/>
+        <rect x="26" y="42" width="48" height="46" rx="6" fill="#132747"/>
+        <rect x="42" y="60" width="16" height="26" rx="8" fill="#F7FAFF"/>
+      </svg>
+      <span>HOMEHUSBANDS<span class="tx">TX</span></span>
+    </div>
+    <div class="area">Houston metro: Tomball · Spring · The Woodlands · Cypress · Katy · Magnolia · Houston</div>
+    <div>© <span id="yr"></span> HomeHusbandsTX · Critter proofing &amp; Texas home services</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+
+  const svcForm=document.getElementById('svcForm');
+  if(svcForm){
+    const sd=document.getElementById('svcDate');
+    if(sd){ sd.min=new Date().toISOString().split('T')[0];
+      sd.addEventListener('change',()=>{ if(!sd.value)return; const [y,m,d]=sd.value.split('-').map(Number);
+        if(new Date(y,m-1,d).getDay()===0){ alert("We're closed Sundays — please choose Monday through Saturday."); sd.value=''; } }); }
+    svcForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const req=['service','name','phone','email','address'];
+      for(const k of req){ const el=svcForm.elements[k]; if(!el.value.trim()){ el.focus(); el.style.borderColor='#D63730'; return; } el.style.borderColor=''; }
+      const btn=document.getElementById('svcSubmit'); btn.disabled=true; btn.textContent='Sending…';
+      const data=new URLSearchParams(new FormData(svcForm)).toString();
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data})
+        .then(()=>{ const ok=document.getElementById('ok'); ok.classList.add('show'); svcForm.reset();
+          ok.scrollIntoView({behavior:'smooth',block:'center'}); })
+        .catch(()=>{ alert('Something went wrong — please call or text (281) 624-6402.'); })
+        .finally(()=>{ btn.disabled=false; btn.textContent='Request my service'; });
+    });
+  }
+</script>
+
+</body>
+</html>
