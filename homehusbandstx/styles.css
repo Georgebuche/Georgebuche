@@ -137,3 +137,21 @@ footer.site .legal{border-top:1px solid #1E5949;padding-top:18px;font-size:.85re
 @media (min-width:860px){.callbar{display:none}body{padding-bottom:0}}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* Phones: drop the header nav so the hero and the price land above the fold.
+   The links stay in the HTML for crawlers and are repeated in the footer,
+   and the sticky call bar covers the action most mobile visitors want. */
+@media (max-width:640px){
+  header.site .wrap{flex-wrap:nowrap}
+  nav.main{display:none}
+  .logo{font-size:1.2rem;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .hdr-tel{font-size:1.05rem;flex:none}
+  .hero{padding:34px 0 32px}
+}
+/* Narrow phones: the header must never clip the phone number, even when the
+   webfont has not loaded and the wider system fallback is in use. */
+@media (max-width:400px){
+  header.site .wrap{gap:8px;padding-left:14px;padding-right:14px}
+  .logo{font-size:1.05rem}
+  .hdr-tel{font-size:.98rem}
+}
