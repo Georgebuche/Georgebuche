@@ -1,0 +1,139 @@
+/* HomeHusbands TX — site styles. Light-only by deliberate choice: one theme,
+   painted explicitly, nothing to go wrong on a phone in a driveway. */
+
+:root{
+  --brand:#14483C;
+  --brand-dk:#0D3229;
+  --brand-soft:#E7EFEA;
+  --cta:#C2410C;
+  --cta-dk:#9A330A;
+  --ground:#FFFFFF;
+  --alt:#F1F4F2;
+  --ink:#17211E;
+  --muted:#56635E;
+  --rule:#DCE3DF;
+  --sans:"Barlow Semi Condensed",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:64px; /* room for the sticky call bar on mobile */
+}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.narrow{max-width:70ch}
+
+h1,h2,h3{font-family:var(--sans);font-weight:700;letter-spacing:-.01em;line-height:1.08;margin:0 0 14px;text-wrap:balance}
+h1{font-size:clamp(2.1rem,6vw,3.4rem)}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-top:0}
+h3{font-size:1.22rem;font-weight:600;line-height:1.25;margin-bottom:8px}
+p{margin:0 0 16px;max-width:70ch}
+ul,ol{margin:0 0 16px;padding-left:1.3em;max-width:70ch}
+li{margin-bottom:8px}
+a{color:var(--brand)}
+a:focus-visible{outline:3px solid var(--cta);outline-offset:2px;border-radius:2px}
+
+/* ---------- header ---------- */
+header.site{background:var(--brand);color:#fff}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.logo{font-family:var(--sans);font-weight:700;font-size:1.5rem;color:#fff;text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.logo span{color:#8FD3BC}
+nav.main{display:flex;gap:20px;flex-wrap:wrap}
+nav.main a{color:#D8E7E0;text-decoration:none;font-size:.95rem;font-weight:500}
+nav.main a:hover{color:#fff;text-decoration:underline}
+.hdr-tel{font-family:var(--sans);font-weight:700;font-size:1.3rem;color:#fff;text-decoration:none;white-space:nowrap}
+
+/* ---------- hero ---------- */
+.hero{background:var(--brand-dk);color:#fff;padding:52px 0 46px}
+.hero h1{color:#fff;margin-bottom:18px}
+.hero .lede{font-size:1.16rem;color:#CFE0D8;max-width:56ch;margin-bottom:26px}
+.hero .lede strong{color:#fff}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-block;background:var(--cta);color:#fff;text-decoration:none;
+  font-family:var(--sans);font-weight:700;font-size:1.15rem;letter-spacing:.01em;
+  padding:14px 26px;border-radius:4px;border:0;cursor:pointer;
+}
+.btn:hover{background:var(--cta-dk)}
+.btn.ghost{background:transparent;color:#fff;border:2px solid #4E7D6D;padding:12px 24px}
+.btn.ghost:hover{background:#164F41;border-color:#8FD3BC}
+
+/* ---------- price cards ---------- */
+.section{padding:52px 0;border-top:1px solid var(--rule)}
+.section.alt{background:var(--alt);border-top:0}
+.section > .wrap > h2{margin-bottom:8px}
+.sec-lede{color:var(--muted);max-width:64ch;margin-bottom:30px;font-size:1.04rem}
+
+.cards{display:grid;grid-template-columns:1fr;gap:20px}
+@media (min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{
+  background:var(--ground);border:1px solid var(--rule);border-top:4px solid var(--brand);
+  padding:24px 22px;display:flex;flex-direction:column;
+}
+.card .price{font-family:var(--sans);font-weight:700;font-size:2.5rem;color:var(--brand);line-height:1;margin:0 0 4px}
+.card .price small{font-size:.95rem;font-weight:600;color:var(--muted);display:block;margin-top:6px;letter-spacing:.01em}
+.card h3{margin-bottom:10px}
+.card ul{padding-left:1.15em;font-size:.96rem;margin-bottom:18px}
+.card .foot{margin-top:auto;padding-top:6px}
+.card .foot a{font-family:var(--sans);font-weight:600;font-size:1.05rem;text-decoration:none;color:var(--cta)}
+.card .foot a:hover{text-decoration:underline}
+
+/* ---------- trust strip ---------- */
+.strip{background:var(--brand-soft);padding:20px 0}
+.strip .wrap{display:flex;gap:14px 34px;flex-wrap:wrap;justify-content:center;
+  font-family:var(--sans);font-weight:600;font-size:1.05rem;color:var(--brand-dk);text-align:center}
+
+/* ---------- FAQ ---------- */
+.faq{border-top:1px solid var(--rule)}
+.faq details{border-bottom:1px solid var(--rule);padding:16px 0}
+.faq summary{
+  font-family:var(--sans);font-weight:600;font-size:1.2rem;cursor:pointer;
+  list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:flex-start;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--cta);font-weight:700;flex:none;font-size:1.4rem;line-height:1}
+.faq details[open] summary::after{content:"\2013"}
+.faq details p{margin:12px 0 0;color:var(--muted)}
+.faq details p:first-of-type{color:var(--ink)}
+
+/* ---------- service area ---------- */
+.areas{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;max-width:none}
+.areas li{margin:0;background:var(--ground);border:1px solid var(--rule);padding:6px 13px;border-radius:3px;font-size:.94rem}
+
+/* ---------- steps ---------- */
+ol.steps{list-style:none;padding:0;counter-reset:st}
+ol.steps li{counter-increment:st;position:relative;padding-left:46px;margin-bottom:18px}
+ol.steps li::before{
+  content:counter(st);position:absolute;left:0;top:-2px;width:32px;height:32px;
+  background:var(--brand);color:#fff;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--sans);font-weight:700;font-size:1.05rem;
+}
+ol.steps strong{display:block;font-family:var(--sans);font-size:1.12rem;margin-bottom:2px}
+
+/* ---------- footer ---------- */
+footer.site{background:var(--brand-dk);color:#B9CFC6;padding:40px 0 28px;font-size:.94rem}
+footer.site a{color:#8FD3BC}
+footer.site .cols{display:grid;grid-template-columns:1fr;gap:26px;margin-bottom:26px}
+@media (min-width:700px){footer.site .cols{grid-template-columns:1.3fr 1fr 1fr}}
+footer.site h4{font-family:var(--sans);color:#fff;font-size:1.1rem;margin:0 0 10px}
+footer.site ul{list-style:none;padding:0;margin:0}
+footer.site li{margin-bottom:7px}
+footer.site .legal{border-top:1px solid #1E5949;padding-top:18px;font-size:.85rem;color:#7FA396}
+
+/* ---------- sticky mobile call bar ---------- */
+.callbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--cta);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 16px;text-decoration:none;color:#fff;
+  font-family:var(--sans);font-weight:700;font-size:1.25rem;
+  box-shadow:0 -2px 12px rgba(0,0,0,.18);
+}
+.callbar:hover{background:var(--cta-dk)}
+@media (min-width:860px){.callbar{display:none}body{padding-bottom:0}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
