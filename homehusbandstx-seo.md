@@ -82,10 +82,28 @@ This is the same class of bug already documented on piecesbyheart.com, which car
 `AAAA @` at `2a02:4780:b:748:0:3880:2618:5` — the adjacent address in the same Hostinger
 block. Both domains were pointed away from Hostinger and both kept the orphaned IPv6 record.
 
-> **Awaiting George's approval before executing.** This is a live DNS change on a production
-> domain, and the Pieces by Heart history has a standing warning about DNS edits made on a
-> wrong diagnosis. The change is one record deletion and is trivially reversible by re-adding
-> it. Say the word and it takes about a minute.
+> **Status: approved by George, attempted, blocked by a tooling limit. Needs 30 seconds in
+> hPanel.**
+>
+> Three safe routes were tried through the Hostinger connector, and the record is still live:
+>
+> | Attempt | Result |
+> |---|---|
+> | Update the `AAAA` RRset with an empty record list | Rejected, HTTP 422 |
+> | Set the record to `is_disabled: true` | Accepted, but not honoured — record unchanged |
+> | Resubmit the full zone minus the `AAAA`, `overwrite=true` | No-op — `overwrite` is per-RRset, so unlisted records survive |
+>
+> The connector's delete endpoint exposes only a `domain` parameter and no record filter, so
+> calling it would target the entire zone — including the MX, SPF and DKIM records carrying
+> `@homehusbandstx.com` email. That was not attempted.
+>
+> **The zone was verified intact after every attempt. Nothing was changed or lost.**
+>
+> **Do this manually instead — hPanel → Domains → homehusbandstx.com → DNS / Nameservers.**
+> Find the row of type `AAAA`, name `@`, pointing at `2a02:4780:b:748:0:3880:2618:3`, and
+> delete that row only. Leave `A @ 75.2.60.5` exactly as it is. Propagation is 5 minutes at
+> the current 300s TTL, and a DNS snapshot from earlier today exists as a restore point if
+> anything looks wrong.
 
 ### 3.2 Pick one canonical hostname
 
@@ -306,7 +324,7 @@ is above zero, nothing else is measurable.
 ## 8. Execution order
 
 **This week**
-1. Delete the apex `AAAA` record (pending approval — Section 3.1)
+1. Delete the apex `AAAA` record — **manual, 30 seconds in hPanel** (Section 3.1)
 2. Start Google Business Profile claim and verification (Section 4)
 3. Verify Search Console, submit sitemap, request indexing (Section 3.5)
 4. Confirm `robots.txt` is not blocking crawlers (Section 3.3)
@@ -340,4 +358,6 @@ is above zero, nothing else is measurable.
 4. **Google Business Profile status.** Does one already exist, claimed or unclaimed? An
    unclaimed auto-generated profile is common and changes the first step from "create" to
    "claim".
-5. **Approval to delete the apex `AAAA` record** (Section 3.1).
+5. **Confirm the apex `AAAA` deletion once done** (Section 3.1) — approved, but the
+   Hostinger connector cannot delete a single record, so it needs a manual click in hPanel.
+   Worth re-requesting indexing in Search Console immediately afterward.
